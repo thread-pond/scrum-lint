@@ -1,3 +1,5 @@
+require_relative 'list'
+
 class TrelloPure
 
   class Board
@@ -8,7 +10,7 @@ class TrelloPure
     end
 
     def lists
-      @lists ||= trello_board.lists
+      @lists ||= trello_board.lists.map { |list| TrelloPure::List.new(list) }
     end
 
     def done_lists
