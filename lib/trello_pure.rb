@@ -26,9 +26,6 @@ class TrelloPure
 
 private
 
-  def list_cards_without_context
-  end
-
   def board
     @board ||= TrelloPure::Board.new(locate_board)
   end
