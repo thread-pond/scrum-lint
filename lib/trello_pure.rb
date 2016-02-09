@@ -1,8 +1,9 @@
 require 'trello'
-require_relative 'trello_pure/board_validator'
-require_relative 'trello_pure/board'
 require 'colorize'
 require 'byebug'
+require_relative 'trello_pure/board_validator'
+require_relative 'trello_pure/board'
+require_relative 'trello_pure/configurator'
 
 class TrelloPure
 
@@ -11,8 +12,8 @@ class TrelloPure
   end
 
   def call
-    configure!
-    TrelloPure::BoardValidator.new.(board)
+    TrelloPure::Configurator.()
+    TrelloPure::BoardValidator.(board)
     list_cards_without_context
   end
 
@@ -44,13 +45,6 @@ private
     list.cards.select { |card| !card.desc.match(/^Context:/) }
   end
 
-  def configure!
-    Trello.configure do |trello_config|
-      trello_config.developer_public_key = trello_developer_public_key
-      trello_config.member_token = trello_member_token
-    end
-  end
-
   def board
     @board ||= TrelloPure::Board.new(locate_board)
   end
@@ -67,14 +61,6 @@ private
 
   def board_name
     TrelloPure.config.board_name
-  end
-
-  def trello_developer_public_key
-    TrelloPure.config.trello_developer_public_key
-  end
-
-  def trello_member_token
-    TrelloPure.config.trello_member_token
   end
 
 end
