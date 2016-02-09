@@ -1,10 +1,11 @@
 require 'trello'
 require 'colorize'
 require 'byebug'
-require_relative 'trello_pure/board_validator'
-require_relative 'trello_pure/board'
+
 require_relative 'trello_pure/configurator'
 require_relative 'trello_pure/configuration'
+require_relative 'trello_pure/board_validator'
+require_relative 'trello_pure/models/board'
 require_relative 'trello_pure/checkers/context_checker'
 
 class TrelloPure
