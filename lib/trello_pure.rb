@@ -4,6 +4,7 @@ require 'byebug'
 require_relative 'trello_pure/board_validator'
 require_relative 'trello_pure/board'
 require_relative 'trello_pure/configurator'
+require_relative 'trello_pure/configuration'
 
 class TrelloPure
 
@@ -18,15 +19,7 @@ class TrelloPure
   end
 
   def self.config
-    OpenStruct.new(
-      board_name: 'Eng: Current',
-      task_list_names: ['Planned', 'This week', 'Doing', 'In Review'],
-      done_list_matcher: /^Done.*$/,
-      project_list_names: ['Active Projects'],
-      ignored_list_names: %w(Emergent),
-      trello_developer_public_key: ENV.fetch('TRELLO_DEVELOPER_PUBLIC_KEY'),
-      trello_member_token: ENV.fetch('TRELLO_MEMBER_TOKEN'),
-    )
+    @config ||= TrelloPure::Configuration.new
   end
 
 private
