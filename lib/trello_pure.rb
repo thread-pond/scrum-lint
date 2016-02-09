@@ -5,6 +5,7 @@ require_relative 'trello_pure/board_validator'
 require_relative 'trello_pure/board'
 require_relative 'trello_pure/configurator'
 require_relative 'trello_pure/configuration'
+require_relative 'trello_pure/checkers/context_checker'
 
 class TrelloPure
 
@@ -15,7 +16,7 @@ class TrelloPure
   def call
     TrelloPure::Configurator.()
     TrelloPure::BoardValidator.(board)
-    list_cards_without_context
+    TrelloPure::ContextChecker.(board)
   end
 
   def self.config
@@ -25,17 +26,6 @@ class TrelloPure
 private
 
   def list_cards_without_context
-    board.task_lists.each do |list|
-      cards = cards_without_context(list)
-      if cards.any?
-        puts "List #{list.name.green} has cards missing context:"
-        cards.each { |card| puts "-> #{card.name.blue}" }
-      end
-    end
-  end
-
-  def cards_without_context(list)
-    list.cards.select { |card| !card.desc.match(/^Context:/) }
   end
 
   def board
