@@ -1,4 +1,4 @@
-class TrelloPure
+class ScrumLint
 
   class Configurator
 
@@ -12,11 +12,11 @@ class TrelloPure
   private
 
     def self.trello_developer_public_key
-      TrelloPure.config.trello_developer_public_key
+      ScrumLint.config.trello_developer_public_key
     end
 
     def self.trello_member_token
-      TrelloPure.config.trello_member_token
+      ScrumLint.config.trello_member_token
     end
 
   end

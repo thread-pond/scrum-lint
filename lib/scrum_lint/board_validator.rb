@@ -1,4 +1,4 @@
-class TrelloPure
+class ScrumLint
 
   class BoardValidator
     def self.call(board)
@@ -14,10 +14,10 @@ class TrelloPure
   private
 
     def expected_list_names(board)
-      TrelloPure.config.project_list_names +
-        TrelloPure.config.task_list_names +
+      ScrumLint.config.project_list_names +
+        ScrumLint.config.task_list_names +
         board.done_lists.map(&:name) +
-        TrelloPure.config.ignored_list_names
+        ScrumLint.config.ignored_list_names
     end
   end
 

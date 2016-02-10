@@ -1,4 +1,4 @@
-class TrelloPure
+class ScrumLint
 
   module Configuration
     def self.new

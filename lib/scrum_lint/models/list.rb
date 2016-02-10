@@ -1,6 +1,6 @@
 require_relative 'card'
 
-class TrelloPure
+class ScrumLint
 
   class List
 
@@ -16,7 +16,7 @@ class TrelloPure
 
     def cards
       @cards ||= trello_list.cards.map do |card|
-        TrelloPure::Card.new(card, list: self)
+        ScrumLint::Card.new(card, list: self)
       end
     end
 

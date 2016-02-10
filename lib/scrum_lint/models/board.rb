@@ -1,6 +1,6 @@
 require_relative 'list'
 
-class TrelloPure
+class ScrumLint
 
   class Board
     attr_accessor :trello_board
@@ -10,7 +10,7 @@ class TrelloPure
     end
 
     def lists
-      @lists ||= trello_board.lists.map { |list| TrelloPure::List.new(list) }
+      @lists ||= trello_board.lists.map { |list| ScrumLint::List.new(list) }
     end
 
     def done_lists
@@ -24,11 +24,11 @@ class TrelloPure
   private
 
     def task_list_name?(name)
-      TrelloPure.config.task_list_names.include?(name) # || done_list_name?(name)
+      ScrumLint.config.task_list_names.include?(name) # || done_list_name?(name)
     end
 
     def done_list_name?(name)
-      name.match(TrelloPure.config.done_list_matcher)
+      name.match(ScrumLint.config.done_list_matcher)
     end
   end
 

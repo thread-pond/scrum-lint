@@ -1,4 +1,4 @@
-class TrelloPure
+class ScrumLint
 
   class ContextChecker
 
