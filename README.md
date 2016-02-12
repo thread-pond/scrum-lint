@@ -14,7 +14,7 @@ gem install scrum_lint
 
 ScrumLint expects the environment variables `TRELLO_DEVELOPER_PUBLIC_KEY` and
 `TRELLO_MEMBER_TOKEN` to be set in order to work. You can see how to acquire
-these tokens in the [Basic authorization section of the `ruby-trello`
+these tokens in the ["Basic authorization" section of the `ruby-trello`
 gem](https://github.com/jeremytregunna/ruby-trello#basic-authorization). Once
 you've set these, you can run the following command for a list of corrections
 to be made:
@@ -28,7 +28,7 @@ ensure it is up to date, and list out any violations.
 
 ## Linters
 
-### Context
+**Context**
 
 The Context linter checks that each card in task lists has a context listed at
 the beginning of it's description. This is expected to be a text label in the
