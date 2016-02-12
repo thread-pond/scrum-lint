@@ -1,0 +1,65 @@
+# ScrumLint
+
+ScrumLint is a tool to manage Chalk's development workflow in Trello and
+Github. It provides feedback based on actions that need to be taken to keep our
+boards in sync with what is actually happening.
+
+## Installation
+
+```sh
+gem install scrum_lint
+```
+
+## Usage
+
+ScrumLint expects the environment variables `TRELLO_DEVELOPER_PUBLIC_KEY` and
+`TRELLO_MEMBER_TOKEN` to be set in order to work. You can see how to acquire
+these tokens in the [Basic authorization section of the `ruby-trello`
+gem](https://github.com/jeremytregunna/ruby-trello#basic-authorization). Once
+you've set these, you can run the following command for a list of corrections
+to be made:
+
+```sh
+scrum-lint
+```
+
+Running ScrumLint will run a series of checks against your Trello board to
+ensure it is up to date, and list out any violations.
+
+## Linters
+
+### Context
+
+The Context linter checks that each card in task lists has a context listed at
+the beginning of it's description. This is expected to be a text label in the
+format:
+
+```
+Context: https://trello.com/c/<some_card_hash>
+```
+
+## Development
+
+After checking out the repo, run `script/setup` to install dependencies. Then,
+run `rake spec` to run the tests. You can also run `script/console` for an
+interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To
+release a new version, update the version number in `version.rb`, and then run
+`bundle exec rake release`, which will create a git tag for the version, push
+git commits and tags, and push the `.gem` file to
+[rubygems.org](https://rubygems.org).
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at
+https://github.com/[USERNAME]/scrum_lint. This project is intended to be a
+safe, welcoming space for collaboration, and contributors are expected to
+adhere to the [Contributor Covenant](http://contributor-covenant.org) code of
+conduct.
+
+
+## License
+
+The gem is available as open source under the terms of the [MIT
+License](http://opensource.org/licenses/MIT).
