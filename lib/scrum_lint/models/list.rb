@@ -1,6 +1,6 @@
 require_relative 'card'
 
-class ScrumLint
+module ScrumLint
 
   class List
 

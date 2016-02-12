@@ -1,6 +1,6 @@
 require_relative 'list'
 
-class ScrumLint
+module ScrumLint
 
   class Board
     attr_accessor :trello_board

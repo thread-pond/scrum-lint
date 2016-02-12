@@ -1,4 +1,4 @@
-class ScrumLint
+module ScrumLint
 
   class Card
 

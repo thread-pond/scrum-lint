@@ -5,7 +5,7 @@ require 'byebug'
 require_relative 'scrum_lint/configuration'
 require_relative 'scrum_lint/runner'
 
-class ScrumLint
+module ScrumLint
 
   def self.config
     @config ||= ScrumLint::Configuration.new

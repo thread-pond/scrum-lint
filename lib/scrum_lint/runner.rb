@@ -3,7 +3,7 @@ require_relative 'models/board'
 require_relative 'board_validator'
 require_relative 'checkers/context_checker'
 
-class ScrumLint
+module ScrumLint
 
   class Runner
     def self.call
