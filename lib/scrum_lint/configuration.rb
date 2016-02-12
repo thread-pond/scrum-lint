@@ -4,7 +4,7 @@ class ScrumLint
     def self.new
       OpenStruct.new(
         board_name: 'Eng: Current',
-        task_list_names: ['Planned', 'This week', 'Doing', 'In Review'],
+        task_list_names: ['Planned', 'This Sprint', 'Doing', 'In Review'],
         done_list_matcher: /^Done.*$/,
         project_list_names: ['Active Projects'],
         ignored_list_names: %w(Emergent),
