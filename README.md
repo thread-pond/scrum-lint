@@ -1,4 +1,7 @@
-# ScrumLint [![Gem Version](https://badge.fury.io/rb/scrum_lint.svg)](https://badge.fury.io/rb/scrum_lint) [![Build Status](https://travis-ci.org/ChalkSchools/scrum-lint.svg?branch=master)](https://travis-ci.org/ChalkSchools/scrum-lint) [![Dependency Status](https://gemnasium.com/ChalkSchools/scrum-lint.svg)](https://gemnasium.com/ChalkSchools/scrum-lint) [![Code Climate](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/gpa.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint) [![Test Coverage](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/coverage.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint/coverage)
+[![Gem Version](https://badge.fury.io/rb/scrum_lint.svg)](https://badge.fury.io/rb/scrum_lint) [![Build Status](https://travis-ci.org/ChalkSchools/scrum-lint.svg?branch=master)](https://travis-ci.org/ChalkSchools/scrum-lint) [![Dependency Status](https://gemnasium.com/ChalkSchools/scrum-lint.svg)](https://gemnasium.com/ChalkSchools/scrum-lint) [![Code Climate](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/gpa.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint)
+[![Test Coverage](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/coverage.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint/coverage)
+
+# ScrumLint
 
 ScrumLint is a tool to manage Chalk's development workflow in Trello and
 Github. It provides feedback based on actions that need to be taken to keep our
