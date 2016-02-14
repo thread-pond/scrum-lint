@@ -1,4 +1,4 @@
-# ScrumLint [![Build Status](https://travis-ci.org/ChalkSchools/scrum-lint.svg?branch=master)](https://travis-ci.org/ChalkSchools/scrum-lint)
+# ScrumLint [![Build Status](https://travis-ci.org/ChalkSchools/scrum-lint.svg?branch=master)](https://travis-ci.org/ChalkSchools/scrum-lint) [![Code Climate](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/gpa.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint) [![Test Coverage](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/coverage.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint/coverage)
 
 ScrumLint is a tool to manage Chalk's development workflow in Trello and
 Github. It provides feedback based on actions that need to be taken to keep our
