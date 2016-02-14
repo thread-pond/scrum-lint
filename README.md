@@ -1,5 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/scrum_lint.svg)](https://badge.fury.io/rb/scrum_lint) [![Build Status](https://travis-ci.org/ChalkSchools/scrum-lint.svg?branch=master)](https://travis-ci.org/ChalkSchools/scrum-lint) [![Dependency Status](https://gemnasium.com/ChalkSchools/scrum-lint.svg)](https://gemnasium.com/ChalkSchools/scrum-lint) [![Code Climate](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/gpa.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint)
-[![Test Coverage](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/coverage.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint/coverage)
+[![Test Coverage](https://codeclimate.com/github/ChalkSchools/scrum-lint/badges/coverage.svg)](https://codeclimate.com/github/ChalkSchools/scrum-lint/coverage) [![Inline docs](http://inch-ci.org/github/chalkschools/scrum-lint.svg?branch=master)](http://inch-ci.org/github/chalkschools/scrum-lint)
 
 # ScrumLint
 
