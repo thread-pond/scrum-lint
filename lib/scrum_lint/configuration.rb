@@ -2,7 +2,10 @@ require 'yaml'
 require 'erb'
 
 module ScrumLint
-
+  # `ScrumLint::Configuration` loads in the configuration from the
+  # `.scrum-lint.yml` file in the current directory, and merges it into the
+  # default configurations. A project must have at minimum a configuration file
+  # with keys `trello_developer_public_key` and `trello_member_token`
   class Configuration
 
     DEFAULT_CONFIGURATION = {
@@ -27,7 +30,7 @@ module ScrumLint
       options = load_yaml_config.merge(DEFAULT_CONFIGURATION)
 
       CONFIGURATION_KEYS.each do |key|
-        self.send("#{key}=", options.fetch(key))
+        public_send("#{key}=", options.fetch(key))
         options.delete(key)
       end
       raise "invalid options: #{options.keys}" if options.any?
@@ -59,5 +62,4 @@ module ScrumLint
     end
 
   end
-
 end

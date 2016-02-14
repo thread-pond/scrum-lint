@@ -1,5 +1,6 @@
 module ScrumLint
-
+  # `ScrumLint::Card` is a wrapper class for `Trello::Card`. This allows us to
+  # cache the list, as well as adding additional functionality going forward.
   class Card
 
     attr_accessor :trello_card, :list
@@ -18,5 +19,4 @@ module ScrumLint
     end
 
   end
-
 end

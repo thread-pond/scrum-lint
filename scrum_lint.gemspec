@@ -12,9 +12,10 @@ Gem::Specification.new do |spec|
   spec.license  = 'MIT'
 
   spec.files         = `git ls-files lib`.split($RS)
-  spec.files         += %w(README.md LICENSE.txt CODE_OF_CONDUCT.md)
+  spec.files        += %w(README.md LICENSE.txt CODE_OF_CONDUCT.md)
   spec.bindir        = 'exe'
-  spec.executables   = `git ls-files exe`.split($RS).map { |f| File.basename(f) }
+  exe_files = `git ls-files exe`.split($RS).map { |f| File.basename(f) }
+  spec.executables   = exe_files
   spec.require_paths = %w(lib)
 
   spec.required_ruby_version = '>= 2.1'
@@ -25,5 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'rubocop', '~> 0.37.1'
+  spec.add_development_dependency 'rubocop-rspec', '~> 1.3.1'
   spec.add_development_dependency 'byebug', '~> 8.2'
 end

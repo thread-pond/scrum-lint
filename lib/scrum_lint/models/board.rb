@@ -1,8 +1,11 @@
 require_relative 'list'
 
 module ScrumLint
-
+  # `ScrumLint::Board` is a wrapper class for `Trello::Board`. It allows us to
+  # cache the lists in memory, as well as adding other useful methods to query
+  # for specific lists.
   class Board
+
     attr_accessor :trello_board
 
     def initialize(trello_board)
@@ -30,6 +33,6 @@ module ScrumLint
     def done_list_name?(name)
       name.match(ScrumLint.config.done_list_matcher)
     end
-  end
 
+  end
 end

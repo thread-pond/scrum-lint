@@ -1,5 +1,7 @@
 module ScrumLint
-
+  # `ScrumLint::ContextChecker` checks over the cards in the given board and
+  # prints out any that are missing a context in their description in the form:
+  #   Context: <link to a trello card>
   class ContextChecker
 
     def self.call(board)
@@ -23,5 +25,4 @@ module ScrumLint
     end
 
   end
-
 end

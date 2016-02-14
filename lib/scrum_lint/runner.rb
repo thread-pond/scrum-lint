@@ -4,8 +4,10 @@ require_relative 'board_validator'
 require_relative 'checkers/context_checker'
 
 module ScrumLint
-
+  # `ScrumLint::Runner` is where it all begins. It sets up configuration, looks
+  # up and validates the board, and then runs the lints
   class Runner
+
     def self.call
       new.()
     end
@@ -24,7 +26,7 @@ module ScrumLint
 
     def locate_board
       matching_boards = boards.select { |board| board.name == board_name }
-      fail 'multiple boards match' if matching_boards.size > 1
+      raise 'multiple boards match' if matching_boards.size > 1
       matching_boards.first
     end
 
@@ -37,5 +39,4 @@ module ScrumLint
     end
 
   end
-
 end

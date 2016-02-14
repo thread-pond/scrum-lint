@@ -1,7 +1,9 @@
 require_relative 'card'
 
 module ScrumLint
-
+  # `ScrumLint::List` is a wrapper class for `Trello::List`. This allows us to
+  # cache the cards in memory instead of requesting for them each time. It will
+  # also allow us to add additional functionality such as predicate methods.
   class List
 
     attr_accessor :trello_list
@@ -21,5 +23,4 @@ module ScrumLint
     end
 
   end
-
 end
