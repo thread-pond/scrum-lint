@@ -1,9 +1,8 @@
 # rubocop:disable Style/EmptyLinesAroundClassBody
 RSpec.describe Callable do
-
   after(:each) do
     if Object.const_defined?(:MyCallableClass)
-      Object.send(:remove_const, :MyCallableClass)
+      Object.__send__(:remove_const, :MyCallableClass)
     end
   end
 
@@ -24,7 +23,7 @@ RSpec.describe Callable do
     end
 
     expect do
-      MyCallableClass.() # rubocop:disable Style/MethodCallParentheses
+      MyCallableClass.()
     end.to raise_error(NotImplementedError)
   end
 
@@ -51,6 +50,5 @@ RSpec.describe Callable do
       end
     end.not_to raise_error
   end
-
 end
 # rubocop:enable Style/EmptyLinesAroundClassBody
