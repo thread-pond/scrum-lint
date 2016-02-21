@@ -66,3 +66,7 @@ Style/AccessModifierIndentation:
 
 Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
+
+RSpec/DescribeMethod:
+  Exclude:
+    - spec/scrum_lint/version_spec.rb
