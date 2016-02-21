@@ -2,9 +2,7 @@ module ScrumLint
   # `ScrumLint::Configurator` configures the `Trello` gem.
   class Configurator
 
-    def self.call
-      new.()
-    end
+    include Callable
 
     def call
       Trello.configure do |trello_config|

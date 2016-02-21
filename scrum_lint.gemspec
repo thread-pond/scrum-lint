@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage = 'https://github.com/ChalkSchools/scrum-lint'
   spec.license  = 'MIT'
 
-  spec.files         = `git ls-files lib`.split($RS)
+  spec.files         = `git ls-files lib util`.split($RS)
   spec.files        += %w(README.md LICENSE.txt CODE_OF_CONDUCT.md)
   spec.bindir        = 'exe'
   exe_files = `git ls-files exe`.split($RS).map { |f| File.basename(f) }

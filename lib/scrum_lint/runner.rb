@@ -8,9 +8,7 @@ module ScrumLint
   # up and validates the board, and then runs the lints
   class Runner
 
-    def self.call
-      new.()
-    end
+    include Callable
 
     def call
       ScrumLint::Configurator.()

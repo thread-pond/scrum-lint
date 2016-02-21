@@ -4,9 +4,7 @@ module ScrumLint
   #   Context: <link to a trello card>
   class ContextChecker
 
-    def self.call(board)
-      new.(board)
-    end
+    include Callable
 
     def call(board)
       board.task_lists.each do |list|

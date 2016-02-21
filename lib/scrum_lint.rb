@@ -1,5 +1,8 @@
 require 'trello'
 require 'colorize'
+
+require_relative '../util/callable'
+
 require_relative 'scrum_lint/version'
 require_relative 'scrum_lint/board_validator'
 require_relative 'scrum_lint/configuration'

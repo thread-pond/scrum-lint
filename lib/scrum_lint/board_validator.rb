@@ -4,9 +4,7 @@ module ScrumLint
   # warn if lists are found that are unaccounted for.
   class BoardValidator
 
-    def self.call(board)
-      new.(board)
-    end
+    include Callable
 
     def call(board)
       raise 'no task lists found!' unless board.task_lists.any?
