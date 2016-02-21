@@ -1,5 +1,5 @@
 require 'trello'
-require 'colorize'
+require 'rainbow/ext/string'
 
 require_relative '../util/callable'
 

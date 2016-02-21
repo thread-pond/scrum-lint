@@ -10,8 +10,8 @@ RSpec.describe ScrumLint::ContextChecker, '#call' do
     board = ScrumLint::Board.new(fake_board)
     allow(checker).to receive(:puts)
     checker.(board)
-    list_message = "List #{'Doing'.green} has cards missing context:"
-    card_message = "-> #{'bar card'.blue}"
+    list_message = "List #{'Doing'.color(:green)} has cards missing context:"
+    card_message = "-> #{'bar card'.color(:blue)}"
     expect(checker).to have_received(:puts).with(list_message)
     expect(checker).to have_received(:puts).with(card_message)
   end

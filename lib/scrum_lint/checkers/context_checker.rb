@@ -10,8 +10,8 @@ module ScrumLint
       board.task_lists.each do |list|
         cards = cards_without_context(list)
         if cards.any?
-          puts "List #{list.name.green} has cards missing context:"
-          cards.each { |card| puts "-> #{card.name.blue}" }
+          puts "List #{list.name.color(:green)} has cards missing context:"
+          cards.each { |card| puts "-> #{card.name.color(:blue)}" }
         end
       end
     end
