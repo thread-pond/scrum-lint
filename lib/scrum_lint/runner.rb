@@ -1,8 +1,3 @@
-require_relative 'configurator'
-require_relative 'models/board'
-require_relative 'board_validator'
-require_relative 'checkers/context_checker'
-
 module ScrumLint
   # `ScrumLint::Runner` is where it all begins. It sets up configuration, looks
   # up and validates the board, and then runs the lints
@@ -12,7 +7,7 @@ module ScrumLint
 
     def call
       ScrumLint::Configurator.()
-      ScrumLint::BoardValidator.(board)
+      ScrumLint::Linter::Board::InvalidLists.(board)
       ScrumLint::ContextChecker.(board)
     end
 

@@ -1,4 +1,4 @@
-RSpec.describe ScrumLint::BoardValidator, '#call' do
+RSpec.describe ScrumLint::Linter::Board::InvalidLists, '#call' do
   let(:validator) { described_class.new }
 
   it 'raises an error when the board has no task lists' do
