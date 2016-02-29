@@ -1,14 +1,11 @@
 module ScrumLint
   module Linter
-    # `ScrumLint::InvalidLists` checks over a board to make sure it has the
-    # expected lists. The board should have at least one task list. It will
-    # also warn if lists are found that are unaccounted for.
-    class InvalidLists
+    # Checks a board for lists that are not matched by any selectors
+    class ExtraList
 
       include Callable
 
       def call(board)
-        raise 'no task lists found!' unless board.task_lists.any?
         extra_list_names = all_list_names(board) - expected_list_names(board)
         warn "extra lists found: #{extra_list_names}" if extra_list_names.any?
       end

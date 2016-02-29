@@ -7,7 +7,8 @@ module ScrumLint
 
     def call
       ScrumLint::Configurator.()
-      ScrumLint::Linter::InvalidLists.(board)
+      ScrumLint::Linter::ExtraList.(board)
+      ScrumLint::Linter::MissingTaskList.(board)
       ScrumLint::Linter::MissingContext.(board)
     end
 

@@ -13,9 +13,12 @@ module ScrumLint
     end
 
     it 'validates the selected board' do
-      allow(Linter::InvalidLists).to receive(:call).and_call_original
+      allow(Linter::MissingTaskList).to receive(:call).and_call_original
+      allow(Linter::ExtraList).to receive(:call).and_call_original
       runner.()
-      expect(Linter::InvalidLists).to have_received(:call)
+      expect(Linter::MissingTaskList).to have_received(:call)
+        .with(instance_of(Board))
+      expect(Linter::ExtraList).to have_received(:call)
         .with(instance_of(Board))
     end
 
