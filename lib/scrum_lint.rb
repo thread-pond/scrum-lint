@@ -12,8 +12,8 @@ require_relative 'scrum_lint/models/card'
 require_relative 'scrum_lint/models/list'
 require_relative 'scrum_lint/models/board'
 
-require_relative 'scrum_lint/linter/board/invalid_lists'
-require_relative 'scrum_lint/checkers/context_checker'
+require_relative 'scrum_lint/linter/invalid_lists'
+require_relative 'scrum_lint/linter/missing_context'
 
 # Namespace for all `ScrumLint` code
 module ScrumLint

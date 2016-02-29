@@ -1,4 +1,4 @@
-RSpec.describe ScrumLint::ContextChecker, '#call' do
+RSpec.describe ScrumLint::Linter::MissingContext, '#call' do
   let(:checker) { described_class.new }
 
   it 'prints out cards that are missing contexts' do
