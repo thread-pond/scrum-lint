@@ -22,5 +22,13 @@ module ScrumLint
       end
     end
 
+    def tags
+      [:all]
+    end
+
+    def to_sym
+      :list
+    end
+
   end
 end

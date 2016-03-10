@@ -24,6 +24,14 @@ module ScrumLint
       @task_lists ||= lists.select { |list| task_list_name?(list.name) }
     end
 
+    def tags
+      [:all]
+    end
+
+    def to_sym
+      :board
+    end
+
   private
 
     def task_list_name?(name)

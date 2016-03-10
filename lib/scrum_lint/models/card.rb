@@ -18,5 +18,13 @@ module ScrumLint
       trello_card.name
     end
 
+    def tags
+      [:all]
+    end
+
+    def to_sym
+      :card
+    end
+
   end
 end
