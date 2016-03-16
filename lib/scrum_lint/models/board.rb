@@ -25,7 +25,7 @@ module ScrumLint
     end
 
     def tags
-      [:all]
+      [:current]
     end
 
     def to_sym

@@ -19,7 +19,7 @@ module ScrumLint
     end
 
     def tags
-      [:all]
+      [:task]
     end
 
     def to_sym

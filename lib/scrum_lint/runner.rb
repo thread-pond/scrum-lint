@@ -7,14 +7,15 @@ module ScrumLint
 
     LINTERS = {
       board: {
-        all: [
+        current: [
           Linter::ExtraList,
           Linter::MissingTaskList,
           Linter::MissingContext,
         ],
+        backlog: [],
       },
-      list: { all: [] },
-      card: { all: [] },
+      list: { task: [], done: [], project: [] },
+      card: { task: [], project: [] },
     }.freeze
 
     def call
