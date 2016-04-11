@@ -12,6 +12,8 @@ require_relative 'scrum_lint/configuration'
 require_relative 'scrum_lint/configurator'
 require_relative 'scrum_lint/runner'
 
+require_relative 'scrum_lint/taggers/list_tagger'
+
 require_relative 'scrum_lint/models/card'
 require_relative 'scrum_lint/models/list'
 require_relative 'scrum_lint/models/board'
