@@ -21,33 +21,19 @@ module ScrumLint
     def call
       ScrumLint::Configurator.()
       boards.each do |board|
-        run_board_lints(board)
+        run_linters(board)
       end
     end
 
   private
 
-    def run_board_lints(board)
-      fetch_linters(board).each do |linter|
-        linter.(board)
+    def run_linters(entity)
+      fetch_linters(entity).each do |linter|
+        linter.(entity)
       end
-      board.lists.each do |list|
-        run_list_lints(list)
-      end
-    end
 
-    def run_list_lints(list)
-      fetch_linters(list).each do |linter|
-        linter.(list)
-      end
-      list.cards.each do |card|
-        run_card_lints(card)
-      end
-    end
-
-    def run_card_lints(card)
-      fetch_linters(card).each do |linter|
-        linter.(card)
+      entity.each do |item|
+        run_linters(item)
       end
     end
 

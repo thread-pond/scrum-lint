@@ -22,6 +22,9 @@ module ScrumLint
       [:task]
     end
 
+    def each
+    end
+
     def to_sym
       :card
     end

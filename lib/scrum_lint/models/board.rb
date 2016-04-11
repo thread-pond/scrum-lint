@@ -26,6 +26,10 @@ module ScrumLint
       [:current]
     end
 
+    def each
+      lists.each { |list| yield(list) }
+    end
+
     def to_sym
       :board
     end

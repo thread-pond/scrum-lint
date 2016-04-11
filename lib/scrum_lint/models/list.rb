@@ -24,6 +24,10 @@ module ScrumLint
       [:task]
     end
 
+    def each
+      cards.each { |card| yield(card) }
+    end
+
     def to_sym
       :list
     end
