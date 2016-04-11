@@ -1,5 +1,3 @@
-require_relative 'list'
-
 module ScrumLint
   # `ScrumLint::Board` is a wrapper class for `Trello::Board`. It allows us to
   # cache the lists in memory, as well as adding other useful methods to query
