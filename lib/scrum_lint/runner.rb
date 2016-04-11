@@ -15,7 +15,11 @@ module ScrumLint
         backlog: [],
       },
       list: { task: [], done: [], project: [] },
-      card: { task: [], project: [] },
+      card: {
+        task: [],
+        done: [Linter::MissingExpendedPoints],
+        project: [],
+      },
     }.freeze
 
     def call

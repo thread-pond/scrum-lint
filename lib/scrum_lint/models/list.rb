@@ -21,7 +21,7 @@ module ScrumLint
     end
 
     def tags
-      @tags ||= ListTagger.new.(self)
+      @tags ||= ListTagger.(self)
     end
 
     def each

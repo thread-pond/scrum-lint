@@ -19,10 +19,14 @@ module ScrumLint
     end
 
     def tags
-      [:task]
+      @tags ||= CardTagger.(self)
     end
 
     def each
+    end
+
+    def list_name
+      list.name
     end
 
     def to_sym

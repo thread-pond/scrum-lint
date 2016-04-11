@@ -7,11 +7,14 @@ require_relative 'scrum_lint/linters/board/current/missing_task_list'
 require_relative 'scrum_lint/linters/board/current/extra_list'
 require_relative 'scrum_lint/linters/board/current/missing_context'
 
+require_relative 'scrum_lint/linters/card/done/missing_expended_points'
+
 require_relative 'scrum_lint/version'
 require_relative 'scrum_lint/configuration'
 require_relative 'scrum_lint/configurator'
 require_relative 'scrum_lint/runner'
 
+require_relative 'scrum_lint/taggers/card_tagger'
 require_relative 'scrum_lint/taggers/list_tagger'
 
 require_relative 'scrum_lint/models/card'

@@ -2,6 +2,8 @@ module ScrumLint
   # A class to identify tags that are appropriate for a list
   class ListTagger
 
+    include Callable
+
     def call(list)
       [
         (:task if task_list?(list)),
