@@ -8,6 +8,7 @@ require_relative 'scrum_lint/linters/board/current/extra_list'
 require_relative 'scrum_lint/linters/board/current/missing_context'
 
 require_relative 'scrum_lint/linters/card/done/missing_expended_points'
+require_relative 'scrum_lint/linters/card/task/missing_hash_tag'
 
 require_relative 'scrum_lint/linters/issue/open/stale_issue'
 

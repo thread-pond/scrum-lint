@@ -14,8 +14,8 @@ module ScrumLint
 
   private
 
-    def task_card?(_card)
-      true
+    def task_card?(card)
+      !card.name.match(/^\[\w+\]/)
     end
 
     def done_card?(card)

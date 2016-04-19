@@ -16,7 +16,7 @@ module ScrumLint
       },
       list: { task: [], done: [], project: [] },
       card: {
-        task: [],
+        task: [Linter::MissingHashTag],
         done: [Linter::MissingExpendedPoints],
         project: [],
       },
