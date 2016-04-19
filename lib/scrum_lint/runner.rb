@@ -20,12 +20,17 @@ module ScrumLint
         done: [Linter::MissingExpendedPoints],
         project: [],
       },
+      repo: { active: [] },
+      issue: { open: [Linter::StaleIssue] },
     }.freeze
 
     def call
       ScrumLint::Configurator.()
-      boards.each do |board|
-        run_linters(board)
+      boards.each do |entity|
+        run_linters(entity)
+      end
+      Repo.each do |repo|
+        run_linters(repo)
       end
     end
 

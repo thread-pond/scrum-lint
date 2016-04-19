@@ -19,6 +19,8 @@ module ScrumLint
     REQUIRED_CONFIGURATION_KEYS = [
       :trello_developer_public_key,
       :trello_member_token,
+      :github_access_token,
+      :github_repo_names,
     ].freeze
 
     CONFIGURATION_KEYS =
