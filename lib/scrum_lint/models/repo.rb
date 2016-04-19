@@ -1,15 +1,29 @@
 require 'octokit'
 
 module ScrumLint
-
+  # a wrapper class for a Github repo from Octokit
   class Repo
 
     attr_accessor :github_repo
 
-    def self.each
-      ScrumLint.config.github_repo_names.each do |repo_name|
-        yield(new(client.repository(repo_name)))
+    class << self
+
+      def each
+        ScrumLint.config.github_repo_names.each do |repo_name|
+          yield(new(client.repository(repo_name)))
+        end
       end
+
+    private
+
+      def client
+        @client ||= Octokit::Client.new(access_token: access_token)
+      end
+
+      def access_token
+        ScrumLint.config.github_access_token
+      end
+
     end
 
     def initialize(github_repo)
@@ -30,15 +44,5 @@ module ScrumLint
       :repo
     end
 
-  private
-
-    def self.client
-      @client ||= Octokit::Client.new(access_token: access_token)
-    end
-
-    def self.access_token
-      ScrumLint.config.github_access_token
-    end
   end
-
 end

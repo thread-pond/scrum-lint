@@ -25,7 +25,7 @@ module ScrumLint
       def twenty_four_hours_in_seconds
         60 * 60 * 24
       end
-    end
 
+    end
   end
 end
