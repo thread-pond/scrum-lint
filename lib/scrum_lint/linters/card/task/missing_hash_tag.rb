@@ -8,7 +8,8 @@ module ScrumLint
       def call(card)
         return if hashtag?(card)
 
-        puts "card missing hashtag: #{card.name.color(:green)}"
+        puts "card missing hashtag: #{card.name.color(:blue)} " \
+          "in list #{card.list.name.color(:green)}"
       end
 
     private
