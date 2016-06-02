@@ -13,7 +13,7 @@ module ScrumLint
     private
 
       def all_list_names(board)
-        board.lists.map(&:name)
+        board.list_names
       end
 
       def expected_list_names(board)

@@ -10,6 +10,10 @@ module ScrumLint
       self.trello_board = trello_board
     end
 
+    def list_names
+      @list_names ||= lists.map(&:name)
+    end
+
     def lists
       @lists ||= trello_board.lists.map { |list| ScrumLint::List.new(list) }
     end
@@ -32,6 +36,14 @@ module ScrumLint
 
     def to_sym
       :board
+    end
+
+    def url
+      trello_board.url
+    end
+
+    def name
+      trello_board.name
     end
 
   private

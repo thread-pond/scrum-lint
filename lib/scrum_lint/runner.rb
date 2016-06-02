@@ -9,6 +9,7 @@ module ScrumLint
       board: {
         current: [
           Linter::ExtraList,
+          Linter::ExtraDoneList,
           Linter::MissingTaskList,
           Linter::MissingContext,
         ],

@@ -5,6 +5,7 @@ require 'rainbow/ext/string'
 require_relative '../util/callable'
 
 require_relative 'scrum_lint/linters/board/current/missing_task_list'
+require_relative 'scrum_lint/linters/board/current/extra_done_list'
 require_relative 'scrum_lint/linters/board/current/extra_list'
 require_relative 'scrum_lint/linters/board/current/missing_context'
 
