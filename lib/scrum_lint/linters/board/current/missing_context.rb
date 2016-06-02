@@ -12,7 +12,10 @@ module ScrumLint
           cards = cards_without_context(list)
           if cards.any?
             puts "List #{list.name.color(:green)} has cards missing context:"
-            cards.each { |card| puts "-> #{card.name.color(:blue)}" }
+            cards.each do |card|
+              Launchy.open(card.url)
+              puts "-> #{card.name.color(:blue)}"
+            end
           end
         end
       end

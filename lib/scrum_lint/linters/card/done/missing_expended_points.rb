@@ -8,6 +8,7 @@ module ScrumLint
       def call(card)
         return if project_card?(card) || card.name.match(/\[\d+(\.\d+)?\]$/)
 
+        Launchy.open(card.url)
         puts "card missing expended points: #{card.name.color(:green)}"
       end
 

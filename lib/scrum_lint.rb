@@ -1,4 +1,5 @@
 require 'trello'
+require 'launchy'
 require 'rainbow/ext/string'
 
 require_relative '../util/callable'

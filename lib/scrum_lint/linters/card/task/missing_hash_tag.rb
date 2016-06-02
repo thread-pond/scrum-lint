@@ -8,6 +8,7 @@ module ScrumLint
       def call(card)
         return if hashtag?(card)
 
+        Launchy.open(card.url)
         puts "card missing hashtag: #{card.name.color(:blue)} " \
           "in list #{card.list.name.color(:green)}"
       end

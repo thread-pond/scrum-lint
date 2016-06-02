@@ -8,6 +8,7 @@ module ScrumLint
       def call(issue)
         return if updated_recently?(issue)
 
+        Launchy.open(issue.link)
         puts "issue hasn't been updated recently: " \
           "#{issue.title.color(:green)} (#{issue.link.color(:blue)})"
       end

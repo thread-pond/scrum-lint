@@ -18,6 +18,10 @@ module ScrumLint
       trello_card.name
     end
 
+    def url
+      trello_card.url
+    end
+
     def tags
       @tags ||= CardTagger.(self)
     end
