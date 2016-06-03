@@ -11,13 +11,15 @@ module ScrumLint
           Linter::ExtraList,
           Linter::ExtraDoneList,
           Linter::MissingTaskList,
-          Linter::MissingContext,
         ],
         backlog: [],
       },
       list: { task: [], done: [], project: [] },
       card: {
-        task: [Linter::MissingHashTag],
+        task: [
+          Linter::MissingContext,
+          Linter::MissingHashTag,
+        ],
         done: [Linter::MissingExpendedPoints],
         project: [],
       },

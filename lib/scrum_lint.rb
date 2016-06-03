@@ -7,10 +7,10 @@ require_relative '../util/callable'
 require_relative 'scrum_lint/linters/board/current/missing_task_list'
 require_relative 'scrum_lint/linters/board/current/extra_done_list'
 require_relative 'scrum_lint/linters/board/current/extra_list'
-require_relative 'scrum_lint/linters/board/current/missing_context'
 
 require_relative 'scrum_lint/linters/card/done/missing_expended_points'
 require_relative 'scrum_lint/linters/card/task/missing_hash_tag'
+require_relative 'scrum_lint/linters/card/task/missing_context'
 
 require_relative 'scrum_lint/linters/issue/open/stale_issue'
 
@@ -35,7 +35,6 @@ module Launchy
       @launch_count ||= 0
       @launch_count += 1
       old_open(url) if @launch_count < 10
-      # puts "would have opened #{url}"
     end
   end
 end
