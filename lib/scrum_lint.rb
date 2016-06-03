@@ -28,14 +28,17 @@ require_relative 'scrum_lint/models/board'
 require_relative 'scrum_lint/models/repo'
 require_relative 'scrum_lint/models/issue'
 
+# Hack override to prevent Launchy from opening buttloads of tabs
 module Launchy
   class << self
-    alias_method :old_open, :open
+
+    alias old_open open
     def open(url)
       @launch_count ||= 0
       @launch_count += 1
       old_open(url) if @launch_count < 10
     end
+
   end
 end
 

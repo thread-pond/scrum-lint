@@ -7,16 +7,17 @@ module ScrumLint
       include Callable
 
       def call(card)
-        return if has_context?(card) && card.list.name != 'Emergent'
+        return if context?(card) && card.list.name != 'Emergent'
         Launchy.open(card.url)
         puts "#{card.name.color(:blue)} has missing Context"
       end
 
     private
 
-      def has_context?(card)
+      def context?(card)
         card.desc.match(/^Context:/)
       end
+
     end
   end
 end
