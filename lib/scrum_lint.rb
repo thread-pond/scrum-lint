@@ -28,6 +28,18 @@ require_relative 'scrum_lint/models/board'
 require_relative 'scrum_lint/models/repo'
 require_relative 'scrum_lint/models/issue'
 
+module Launchy
+  class << self
+    alias_method :old_open, :open
+    def open(url)
+      @launch_count ||= 0
+      @launch_count += 1
+      old_open(url) if @launch_count < 10
+      # puts "would have opened #{url}"
+    end
+  end
+end
+
 # Namespace for all `ScrumLint` code
 module ScrumLint
   def self.config
