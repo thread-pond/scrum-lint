@@ -31,9 +31,13 @@ module ScrumLint
     end
 
     def each
-      github_repo.rels[:issues].get.data.each do |github_issue|
+      issues.each do |github_issue|
         yield(Issue.new(github_issue))
       end
+    end
+
+    def issues
+      github_repo.rels[:issues].get.data
     end
 
     def tags
