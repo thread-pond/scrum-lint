@@ -1,5 +1,5 @@
-def fake_trello_card(name: 'What card', desc: 'some desc')
-  instance_double(Trello::Card, name: name, desc: desc)
+def fake_trello_card(name: 'What card', desc: 'some desc', **options)
+  instance_double(Trello::Card, name: name, desc: desc, **options)
 end
 
 def fake_trello_list(name: 'Planned', cards: [])
