@@ -31,12 +31,10 @@ module ScrumLint
     end
 
     def each
-      issues.each do |github_issue|
-        yield(Issue.new(github_issue))
-      end
+      github_issues.each { |github_issue| yield(Issue.new(github_issue)) }
     end
 
-    def issues
+    def github_issues
       github_repo.rels[:issues].get.data
     end
 
