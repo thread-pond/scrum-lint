@@ -4,27 +4,23 @@ module ScrumLint
   class TrelloMapper
 
     include Callable
-    
+
     def call
-      [board]
+      trello_boards.map do |trello_board|
+        board_mapper.(trello_board)
+      end
     end
 
   private
 
-    def board
-      @board ||= ScrumLint::Board.new(locate_board)
-    end
-
-    def locate_board
-      matching_boards = trello_boards.select do |board|
-        board.name == board_name
-      end
-      raise 'multiple boards match' if matching_boards.size > 1
-      matching_boards.first
+    def board_mapper
+      @board_mapper ||= ScrumLint::TrelloBoardMapper.new
     end
 
     def trello_boards
-      Trello::Board.all
+      Trello::Board.all.select do |trello_board|
+        trello_board.name == board_name
+      end
     end
 
     def board_name
