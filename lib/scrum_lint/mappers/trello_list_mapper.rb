@@ -17,7 +17,13 @@ module ScrumLint
     end
 
     def mapped_cards(list:, trello_list:)
-      trello_list.cards.map { |card| ScrumLint::Card.new(card, list: list) }
+      trello_list.cards.map do |trello_card|
+        card_mapper.(trello_card, list: list)
+      end
+    end
+
+    def card_mapper
+      @card_mapper ||= ScrumLint::TrelloCardMapper.new
     end
 
   end

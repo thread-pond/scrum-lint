@@ -3,23 +3,13 @@ module ScrumLint
   # cache the list, as well as adding additional functionality going forward.
   class Card
 
-    attr_accessor :trello_card, :list
+    attr_reader :desc, :list, :name, :url
 
-    def initialize(trello_card, list:)
-      self.trello_card = trello_card
-      self.list = list
-    end
-
-    def desc
-      trello_card.desc
-    end
-
-    def name
-      trello_card.name
-    end
-
-    def url
-      trello_card.url
+    def initialize(desc:, list:, name:, url:)
+      @desc = desc
+      @list = list
+      @name = name
+      @url = url
     end
 
     def tags
