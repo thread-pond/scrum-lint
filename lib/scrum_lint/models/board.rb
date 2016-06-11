@@ -4,18 +4,16 @@ module ScrumLint
   # for specific lists.
   class Board
 
-    attr_accessor :trello_board
+    attr_reader :lists, :name, :url
 
-    def initialize(trello_board)
-      self.trello_board = trello_board
+    def initialize(lists:, name:, url:)
+      @lists = lists
+      @name = name
+      @url = url
     end
 
     def list_names
       @list_names ||= lists.map(&:name)
-    end
-
-    def lists
-      @lists ||= trello_board.lists.map { |list| ScrumLint::List.new(list) }
     end
 
     def done_lists
@@ -36,14 +34,6 @@ module ScrumLint
 
     def to_sym
       :board
-    end
-
-    def url
-      trello_board.url
-    end
-
-    def name
-      trello_board.name
     end
 
   private

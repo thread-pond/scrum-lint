@@ -7,5 +7,5 @@ def fake_trello_list(name: 'Planned', cards: [])
 end
 
 def fake_trello_board(name: 'Eng: Current', lists: [fake_trello_list])
-  instance_double(Trello::Board, name: name, lists: lists)
+  instance_double(Trello::Board, name: name, lists: lists, url: '')
 end
