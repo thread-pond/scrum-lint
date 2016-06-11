@@ -5,7 +5,8 @@ RSpec.describe ScrumLint::Linter::MissingContext, '#call' do
     allow(Launchy).to receive(:open)
     list = fake_trello_list
     url = 'foo/bar/butts'
-    card = fake_trello_card(name: 'bar card', desc: 'no context', url: url, list: list)
+    card_options = { name: 'bar card', desc: 'nocontext', url: url, list: list }
+    card = fake_trello_card(card_options)
     allow(checker).to receive(:puts)
     checker.(card)
     card_message = "#{'bar card'.color(:blue)} has missing Context"
