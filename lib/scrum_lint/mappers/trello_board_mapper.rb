@@ -13,13 +13,17 @@ module ScrumLint
     def board_params(trello_board)
       {
         lists: mapped_lists(trello_board),
-        url: trello_board.url,
         name: trello_board.name,
+        url: trello_board.url,
       }
     end
 
     def mapped_lists(trello_board)
-      trello_board.lists.map { |list| ScrumLint::List.new(list) }
+      trello_board.lists.map { |trello_list| list_mapper.(trello_list) }
+    end
+
+    def list_mapper
+      @list_mapper ||= TrelloListMapper.new
     end
 
   end

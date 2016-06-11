@@ -4,20 +4,12 @@ module ScrumLint
   # also allow us to add additional functionality such as predicate methods.
   class List
 
-    attr_accessor :trello_list
+    attr_accessor :cards
+    attr_reader :name
 
-    def initialize(trello_list)
-      self.trello_list = trello_list
-    end
-
-    def name
-      trello_list.name
-    end
-
-    def cards
-      @cards ||= trello_list.cards.map do |card|
-        ScrumLint::Card.new(card, list: self)
-      end
+    def initialize(name:)
+      @cards = cards
+      @name = name
     end
 
     def tags
