@@ -59,27 +59,7 @@ module ScrumLint
     end
 
     def boards
-      [board]
-    end
-
-    def board
-      @board ||= ScrumLint::Board.new(locate_board)
-    end
-
-    def locate_board
-      matching_boards = trello_boards.select do |board|
-        board.name == board_name
-      end
-      raise 'multiple boards match' if matching_boards.size > 1
-      matching_boards.first
-    end
-
-    def trello_boards
-      Trello::Board.all
-    end
-
-    def board_name
-      ScrumLint.config.board_name
+      ScrumLint::TrelloMapper.()
     end
 
   end
