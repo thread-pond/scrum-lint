@@ -32,12 +32,16 @@ module ScrumLint
       boards.each do |entity|
         run_linters(entity)
       end
-      Repo.each do |repo|
+      repos.each do |repo|
         run_linters(repo)
       end
     end
 
   private
+
+    def repos
+      OctokitMapper.()
+    end
 
     def run_linters(entity)
       fetch_linters(entity).each do |linter|

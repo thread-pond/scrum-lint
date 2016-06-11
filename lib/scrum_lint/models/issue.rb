@@ -2,22 +2,12 @@ module ScrumLint
   # a wrapper class for Sawyer::Resource returned by Octokit
   class Issue
 
-    attr_accessor :github_issue
+    attr_reader :link, :title, :updated_at
 
-    def initialize(github_issue)
-      self.github_issue = github_issue
-    end
-
-    def title
-      github_issue[:title]
-    end
-
-    def updated_at
-      github_issue[:updated_at]
-    end
-
-    def link
-      github_issue[:html_url]
+    def initialize(title:, updated_at:, link:)
+      @title = title
+      @updated_at = updated_at
+      @link = link
     end
 
     def tags
