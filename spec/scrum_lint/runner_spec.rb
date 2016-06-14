@@ -3,7 +3,7 @@ module ScrumLint
     let(:runner) { described_class.new }
 
     before(:each) do
-      allow(Trello::Board).to receive(:all).and_return([fake_trello_board])
+      allow(::Trello::Board).to receive(:all).and_return([fake_trello_board])
     end
 
     it 'configures trello settings' do

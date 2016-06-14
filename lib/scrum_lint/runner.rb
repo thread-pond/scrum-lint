@@ -40,7 +40,7 @@ module ScrumLint
   private
 
     def repos
-      OctokitMapper.()
+      ScrumLint::Octokit::Mapper.()
     end
 
     def run_linters(entity)
@@ -59,7 +59,7 @@ module ScrumLint
     end
 
     def boards
-      ScrumLint::TrelloMapper.()
+      ScrumLint::Trello::Mapper.()
     end
 
   end

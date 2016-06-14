@@ -5,7 +5,7 @@ module ScrumLint
     include Callable
 
     def call
-      Trello.configure do |trello_config|
+      ::Trello.configure do |trello_config|
         trello_config.developer_public_key = trello_developer_public_key
         trello_config.member_token = trello_member_token
       end
