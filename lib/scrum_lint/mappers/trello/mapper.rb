@@ -1,3 +1,5 @@
+require 'trello'
+
 module ScrumLint
   module Trello
     # a mapper class to query Trello via Ruby Trello and return a

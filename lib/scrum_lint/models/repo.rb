@@ -1,5 +1,3 @@
-require 'octokit'
-
 module ScrumLint
   # a wrapper class for a Github repo from Octokit
   class Repo

@@ -1,4 +1,3 @@
-require 'trello'
 require 'launchy'
 require 'rainbow/ext/string'
 
