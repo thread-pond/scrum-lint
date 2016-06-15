@@ -8,6 +8,7 @@ module ScrumLint
       [
         (:task if task_card?(card)),
         (:done if done_card?(card)),
+        (:active if active_card?(card)),
         (:project if project_card?(card)),
       ].compact
     end
@@ -20,6 +21,10 @@ module ScrumLint
 
     def done_card?(card)
       card.list_name.match(ScrumLint.config.done_list_matcher)
+    end
+
+    def active_card?(card)
+      card.list_name != 'Emergent'
     end
 
     def project_card?(card)

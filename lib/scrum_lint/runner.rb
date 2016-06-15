@@ -20,10 +20,8 @@ module ScrumLint
         [:project] => [],
       },
       card: {
-        [:task] => [
-          Linter::MissingContext,
-          Linter::MissingHashTag,
-        ],
+        [:task] => [Linter::MissingHashTag],
+        [:task, :active] => [Linter::MissingContext],
         [:task, :done] => [Linter::MissingExpendedPoints],
         [:project] => [],
       },

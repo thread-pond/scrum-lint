@@ -6,16 +6,10 @@ module ScrumLint
       include Callable
 
       def call(card)
-        return if project_card?(card) || card.name.match(/\[\d+(\.\d+)?\]$/)
+        return if card.name.match(/\[\d+(\.\d+)?\]$/)
 
         Launchy.open(card.url)
         puts "card missing expended points: #{card.name.color(:green)}"
-      end
-
-    private
-
-      def project_card?(card)
-        card.tags.include?(:project)
       end
 
     end
