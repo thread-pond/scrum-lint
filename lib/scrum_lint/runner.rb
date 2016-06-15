@@ -7,34 +7,38 @@ module ScrumLint
 
     LINTERS = {
       board: {
-        current: [
+        [:current] => [
           Linter::ExtraList,
           Linter::ExtraDoneList,
           Linter::MissingTaskList,
         ],
-        backlog: [],
+        [:backlog] => [],
       },
-      list: { task: [], done: [], project: [] },
+      list: {
+        [:task] => [],
+        [:done] => [],
+        [:project] => [],
+      },
       card: {
-        task: [
+        [:task] => [
           Linter::MissingContext,
           Linter::MissingHashTag,
         ],
-        done: [Linter::MissingExpendedPoints],
-        project: [],
+        [:task, :done] => [Linter::MissingExpendedPoints],
+        [:project] => [],
       },
-      repo: { active: [] },
-      issue: { open: [Linter::StaleIssue] },
+      repo: {
+        [:active] => [],
+      },
+      issue: {
+        [:open] => [Linter::StaleIssue],
+      },
     }.freeze
 
     def call
       ScrumLint::Configurator.()
-      boards.each do |entity|
-        run_linters(entity)
-      end
-      repos.each do |repo|
-        run_linters(repo)
-      end
+      boards.each { |entity| run_linters(entity) }
+      repos.each { |repo| run_linters(repo) }
     end
 
   private
@@ -55,11 +59,14 @@ module ScrumLint
 
     def fetch_linters(entity)
       entity_linters = LINTERS[entity.to_sym]
-      entity_linters.values_at(*entity.tags).flatten.uniq
+      keys_matching_tags = entity_linters.keys.select do |key|
+        Set.new(entity.tags) >= Set.new(key)
+      end
+      entity_linters.values_at(*keys_matching_tags).flatten.uniq
     end
 
     def boards
-      ScrumLint::Trello::Mapper.()
+      @boards ||= ScrumLint::Trello::Mapper.()
     end
 
   end
