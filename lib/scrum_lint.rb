@@ -43,6 +43,7 @@ module Launchy
     def open(url)
       @launch_count ||= 0
       @launch_count += 1
+      exit(0) if @launch_count >= 10
       old_open(url) if @launch_count < 10
     end
 

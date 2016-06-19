@@ -22,12 +22,12 @@ module ScrumLint
 
       def trello_boards
         ::Trello::Board.all.select do |trello_board|
-          trello_board.name == board_name
+          board_names.include?(trello_board.name)
         end
       end
 
-      def board_name
-        ScrumLint.config.board_name
+      def board_names
+        Set.new(ScrumLint.config.board_names)
       end
 
     end

@@ -9,7 +9,7 @@ module ScrumLint
   class Configuration
 
     DEFAULT_CONFIGURATION = {
-      board_name:      'Eng: Current',
+      board_names:      ['Eng: Current'],
       task_list_names: ['Planned', 'This Sprint', 'Doing', 'In Review'],
       done_list_matcher: /^Done.*$/,
       project_list_names: ['Active Projects'],
@@ -29,7 +29,7 @@ module ScrumLint
     attr_accessor(*CONFIGURATION_KEYS)
 
     def initialize
-      options = load_yaml_config.merge(DEFAULT_CONFIGURATION)
+      options = DEFAULT_CONFIGURATION.merge(load_yaml_config)
 
       CONFIGURATION_KEYS.each do |key|
         public_send("#{key}=", options.fetch(key))
