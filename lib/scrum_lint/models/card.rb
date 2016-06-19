@@ -5,11 +5,12 @@ module ScrumLint
 
     attr_reader :desc, :list, :name, :url
 
-    def initialize(desc:, list:, name:, url:)
+    def initialize(desc:, list:, name:, url:, source:)
       @desc = desc
       @list = list
       @name = name
       @url = url
+      @source = source
     end
 
     def tags
@@ -17,6 +18,14 @@ module ScrumLint
     end
 
     def each
+    end
+
+    def name=(name)
+      @source.name = name
+    end
+
+    def save
+      @source.update!
     end
 
     def list_name

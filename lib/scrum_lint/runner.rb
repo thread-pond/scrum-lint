@@ -1,3 +1,5 @@
+require 'optparse'
+
 module ScrumLint
   # `ScrumLint::Runner` is where it all begins. It sets up configuration, looks
   # up and validates the board, and then runs the lints
@@ -33,16 +35,52 @@ module ScrumLint
       },
     }.freeze
 
+    INTERACTIVE_LINTERS = {
+      board: {},
+      list: {},
+      card: {
+        [:task] => [InteractiveLinter::MissingHashTag],
+      },
+      repo: {},
+      issue: {},
+    }.freeze
+
     def call
+      options = {}
+      OptionParser.new do |opts|
+        opts.banner = 'Usage: scrum-lint [options]'
+        opts.on('-i', '--interactive', 'run in interactive mode') do
+          options[:interactive] = true
+        end
+        opts.on('-h', '--help', 'prints this help') do
+          puts opts
+          exit
+        end
+      end.parse!
+
       ScrumLint::Configurator.()
-      boards.each { |entity| run_linters(entity) }
-      repos.each { |repo| run_linters(repo) }
+      if options[:interactive]
+        boards.each { |entity| run_interactive_linters(entity) }
+      else
+        boards.each { |entity| run_linters(entity) }
+        repos.each { |repo| run_linters(repo) }
+      end
     end
 
   private
 
     def repos
       ScrumLint::Octokit::Mapper.()
+    end
+
+    def run_interactive_linters(entity)
+      fetch_linters(entity, linters: INTERACTIVE_LINTERS).each do |linter|
+        linter.(entity)
+      end
+
+      entity.each do |item|
+        run_interactive_linters(item)
+      end
     end
 
     def run_linters(entity)
@@ -55,8 +93,8 @@ module ScrumLint
       end
     end
 
-    def fetch_linters(entity)
-      entity_linters = LINTERS[entity.to_sym]
+    def fetch_linters(entity, linters: LINTERS)
+      entity_linters = linters[entity.to_sym]
       keys_matching_tags = entity_linters.keys.select do |key|
         Set.new(entity.tags) >= Set.new(key)
       end
