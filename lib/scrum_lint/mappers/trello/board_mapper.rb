@@ -20,7 +20,11 @@ module ScrumLint
       end
 
       def mapped_lists(trello_board)
-        trello_board.lists.map { |trello_list| list_mapper.(trello_list) }
+        available_labels = trello_board.labels
+        trello_board.lists.map do |trello_list|
+          print '.'
+          list_mapper.(trello_list, available_labels: available_labels)
+        end
       end
 
       def list_mapper

@@ -39,7 +39,10 @@ module ScrumLint
       board: {},
       list: {},
       card: {
-        [:task] => [InteractiveLinter::MissingHashTag],
+        [:task] => [
+          InteractiveLinter::MissingHashTag,
+          InteractiveLinter::MissingLabel,
+        ],
       },
       repo: {},
       issue: {},

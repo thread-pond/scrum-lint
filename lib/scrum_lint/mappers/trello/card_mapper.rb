@@ -5,14 +5,16 @@ module ScrumLint
 
       include Callable
 
-      def call(trello_card, list:)
-        ScrumLint::Card.new(card_params(trello_card, list: list))
+      def call(trello_card, list:, available_labels:)
+        ScrumLint::Card.new(card_params(trello_card, list: list, available_labels: available_labels))
       end
 
     private
 
-      def card_params(trello_card, list:)
+      def card_params(trello_card, list:, available_labels:)
         {
+          available_labels: available_labels,
+          labels: trello_card.card_labels,
           desc: trello_card.desc,
           list: list,
           name: trello_card.name,

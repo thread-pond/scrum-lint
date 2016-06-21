@@ -14,6 +14,7 @@ require_relative 'scrum_lint/linters/card/task/missing_context'
 require_relative 'scrum_lint/linters/issue/open/stale_issue'
 
 require_relative 'scrum_lint/interactive_linters/card/missing_hash_tag'
+require_relative 'scrum_lint/interactive_linters/card/missing_label'
 
 require_relative 'scrum_lint/version'
 require_relative 'scrum_lint/configuration'
