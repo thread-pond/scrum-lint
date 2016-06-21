@@ -1,9 +1,7 @@
 module ScrumLint
   module InteractiveLinter
     # checks that cards have #HashTag and interactively assigns
-    class MissingHashTag
-
-      include Callable
+    class MissingHashTag < InteractiveLinter::Base
 
       def call(card)
         return if hashtag?(card)
@@ -28,12 +26,6 @@ module ScrumLint
       end
 
     private
-
-      def goodbye
-        puts
-        puts 'goodbye'
-        exit
-      end
 
       def hashtag?(card)
         !card.name.match(/#\w+/).nil?
