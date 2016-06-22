@@ -3,7 +3,7 @@ RSpec.describe ScrumLint::Configuration do
 
   describe '#initialize' do
     it 'sets up default configurations' do
-      expect(configuration.board_name).to eq 'Eng: Current'
+      expect(configuration.board_names).to eq ['Eng: Current']
     end
 
     it 'aborts when .scrum-lint.yml is missing' do

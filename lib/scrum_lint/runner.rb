@@ -59,7 +59,7 @@ module ScrumLint
           puts opts
           exit
         end
-      end.parse!
+      end.parse!(command_line_arguments)
 
       ScrumLint::Configurator.()
       if options[:interactive]
@@ -74,6 +74,10 @@ module ScrumLint
 
     def repos
       ScrumLint::Octokit::Mapper.()
+    end
+
+    def command_line_arguments
+      ARGV
     end
 
     def run_interactive_linters(entity, context: {})

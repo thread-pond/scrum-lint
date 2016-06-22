@@ -4,6 +4,7 @@ module ScrumLint
 
     before(:each) do
       allow(::Trello::Board).to receive(:all).and_return([fake_trello_board])
+      allow(runner).to receive(:command_line_arguments).and_return([])
     end
 
     it 'configures trello settings' do

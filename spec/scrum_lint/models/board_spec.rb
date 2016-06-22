@@ -2,7 +2,7 @@ RSpec.describe ScrumLint::Board do
   let(:fake_done_list) { fake_trello_list(name: 'Done Stuff') }
   let(:fake_task_list) { fake_trello_list(name: 'This Sprint') }
   let(:lists) { [fake_done_list, fake_task_list] }
-  let(:board) { described_class.new(lists: lists, url: '', name: '') }
+  let(:board) { described_class.new(lists: lists, url: '', name: '', context: {}) }
 
   describe '#lists' do
     it 'returns all of the lists for the board' do
