@@ -4,9 +4,10 @@ module ScrumLint
   # for specific lists.
   class Board
 
-    attr_reader :lists, :name, :url
+    attr_reader :context, :lists, :name, :url
 
-    def initialize(lists:, name:, url:)
+    def initialize(lists:, name:, url:, context:)
+      @context = context
       @lists = lists
       @name = name
       @url = url

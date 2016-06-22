@@ -3,10 +3,9 @@ module ScrumLint
   # cache the list, as well as adding additional functionality going forward.
   class Card
 
-    attr_reader :available_labels, :desc, :labels, :list, :name, :url
+    attr_reader :desc, :labels, :list, :name, :url
 
-    def initialize(desc:, list:, name:, url:, available_labels:, source:, labels:)
-      @available_labels = available_labels
+    def initialize(desc:, list:, name:, url:, source:, labels:)
       @desc = desc
       @labels = labels
       @list = list

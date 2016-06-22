@@ -16,14 +16,18 @@ module ScrumLint
           lists: mapped_lists(trello_board),
           name: trello_board.name,
           url: trello_board.url,
+          context: board_context(trello_board),
         }
       end
 
+      def board_context(trello_board)
+        { available_labels: trello_board.labels }
+      end
+
       def mapped_lists(trello_board)
-        available_labels = trello_board.labels
         trello_board.lists.map do |trello_list|
           print '.'
-          list_mapper.(trello_list, available_labels: available_labels)
+          list_mapper.(trello_list)
         end
       end
 

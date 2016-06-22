@@ -76,14 +76,19 @@ module ScrumLint
       ScrumLint::Octokit::Mapper.()
     end
 
-    def run_interactive_linters(entity)
+    def run_interactive_linters(entity, context: {})
       fetch_linters(entity, linters: INTERACTIVE_LINTERS).each do |linter|
-        linter.(entity)
+        linter.(entity, context)
       end
 
+      new_context = merge_context(entity: entity, context: context)
       entity.each do |item|
-        run_interactive_linters(item)
+        run_interactive_linters(item, context: new_context)
       end
+    end
+
+    def merge_context(entity:, context:)
+      entity.respond_to?(:context) ? context.merge(entity.context) : context
     end
 
     def run_linters(entity)

@@ -3,15 +3,15 @@ module ScrumLint
     # checks that cards have Trello labels and interactively assigns
     class MissingLabel < InteractiveLinter::Base
 
-      def call(card)
+      def call(card, available_labels:, **_)
         return if label?(card)
 
         puts "card missing label: #{card.name.color(:green)}"
-        puts available_labels(card)
+        print_indexed(available_labels, :name)
         print "enter label number > "
         label_number = gets
         goodbye unless label_number
-        label = card.available_labels[Integer(label_number) - 1]
+        label = available_labels[Integer(label_number) - 1]
         card.add_label(label)
       end
 
@@ -21,10 +21,10 @@ module ScrumLint
         card.labels.any?
       end
 
-      def available_labels(card)
-        card.available_labels.each_with_index.map do |label, index|
-          "#{index + 1}. #{label.name}"
-        end.join("\n")
+      def print_indexed(collection, property)
+        collection.each_with_index.map do |item, index|
+          puts "#{index + 1}. #{item.public_send(property)}"
+        end
       end
 
     end
