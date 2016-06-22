@@ -20,6 +20,7 @@ require_relative 'scrum_lint/interactive_linters/card/missing_label'
 require_relative 'scrum_lint/version'
 require_relative 'scrum_lint/configuration'
 require_relative 'scrum_lint/configurator'
+require_relative 'scrum_lint/option_parser'
 require_relative 'scrum_lint/runner'
 
 require_relative 'scrum_lint/taggers/card_tagger'

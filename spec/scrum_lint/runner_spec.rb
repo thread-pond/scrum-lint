@@ -4,19 +4,18 @@ module ScrumLint
 
     before(:each) do
       allow(::Trello::Board).to receive(:all).and_return([fake_trello_board])
-      allow(runner).to receive(:command_line_arguments).and_return([])
     end
 
     it 'configures trello settings' do
       allow(Configurator).to receive(:call).and_call_original
-      runner.()
+      runner.([])
       expect(Configurator).to have_received(:call)
     end
 
     it 'validates the selected board' do
       allow(Linter::MissingTaskList).to receive(:call).and_call_original
       allow(Linter::ExtraList).to receive(:call).and_call_original
-      runner.()
+      runner.([])
       expect(Linter::MissingTaskList).to have_received(:call)
         .with(instance_of(Board))
       expect(Linter::ExtraList).to have_received(:call)
@@ -25,7 +24,7 @@ module ScrumLint
 
     it 'checks contexts' do
       allow(Linter::MissingContext).to receive(:call).and_call_original
-      runner.()
+      runner.([])
       expect(Linter::MissingContext).to have_received(:call)
         .with(instance_of(Board))
     end

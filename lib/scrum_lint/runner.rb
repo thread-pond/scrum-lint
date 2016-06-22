@@ -48,18 +48,8 @@ module ScrumLint
       issue: {},
     }.freeze
 
-    def call
-      options = {}
-      OptionParser.new do |opts|
-        opts.banner = 'Usage: scrum-lint [options]'
-        opts.on('-i', '--interactive', 'run in interactive mode') do
-          options[:interactive] = true
-        end
-        opts.on('-h', '--help', 'prints this help') do
-          puts opts
-          exit
-        end
-      end.parse!(command_line_arguments)
+    def call(args = ARGV)
+      options = ScrumLint::OptionParser.(args)
 
       ScrumLint::Configurator.()
       if options[:interactive]
@@ -74,10 +64,6 @@ module ScrumLint
 
     def repos
       ScrumLint::Octokit::Mapper.()
-    end
-
-    def command_line_arguments
-      ARGV
     end
 
     def run_interactive_linters(entity, context: {})
