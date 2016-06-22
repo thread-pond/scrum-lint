@@ -8,13 +8,13 @@ module ScrumLint
 
     def call(args)
       options = {}
-      ::OptionParser.new do |opts|
-        opts.banner = 'Usage: scrum-lint [options]'
-        opts.on('-i', '--interactive', 'run in interactive mode') do
+      ::OptionParser.new do |parser|
+        parser.banner = 'Usage: scrum-lint [options]'
+        parser.on('-i', '--interactive', 'run in interactive mode') do
           options[:interactive] = true
         end
-        opts.on('-h', '--help', 'prints this help') do
-          puts opts
+        parser.on('-h', '--help', 'prints this help') do
+          puts parser
           exit
         end
       end.parse!(args)
