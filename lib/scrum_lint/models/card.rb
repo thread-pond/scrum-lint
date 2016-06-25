@@ -21,6 +21,10 @@ module ScrumLint
     def each
     end
 
+    def desc=(desc)
+      @source.desc = desc
+    end
+
     def name=(name)
       @source.name = name
     end

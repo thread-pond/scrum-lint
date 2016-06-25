@@ -12,16 +12,24 @@ module ScrumLint
     private
 
       def board_params(trello_board)
+        lists = mapped_lists(trello_board)
         {
-          lists: mapped_lists(trello_board),
+          lists: lists,
           name: trello_board.name,
           url: trello_board.url,
-          context: board_context(trello_board),
+          context: board_context(trello_board, lists: lists),
         }
       end
 
-      def board_context(trello_board)
-        { available_labels: trello_board.labels }
+      def board_context(trello_board, lists:)
+        {
+          available_labels: trello_board.labels,
+          project_cards: project_cards(lists),
+        }
+      end
+
+      def project_cards(lists)
+        lists.flat_map(&:cards).select { |card| card.tags.include?(:project) }
       end
 
       def mapped_lists(trello_board)

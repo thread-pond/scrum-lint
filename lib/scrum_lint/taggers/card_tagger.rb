@@ -16,7 +16,7 @@ module ScrumLint
   private
 
     def task_card?(card)
-      !card.name.match(/^\[\w+\]/)
+      !project_card?(card)
     end
 
     def done_card?(card)
@@ -28,7 +28,7 @@ module ScrumLint
     end
 
     def project_card?(card)
-      card.name.match(/\[\w+\]/)
+      card.name.match(/^\[\w+\]/)
     end
 
   end

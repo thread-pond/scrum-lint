@@ -13,6 +13,12 @@ module ScrumLint
         exit
       end
 
+      def print_indexed(collection, property)
+        collection.each_with_index.map do |item, index|
+          puts "#{index + 1}. #{item.public_send(property)}"
+        end
+      end
+
     end
   end
 end

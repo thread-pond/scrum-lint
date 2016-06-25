@@ -43,6 +43,7 @@ module ScrumLint
           InteractiveLinter::MissingHashTag,
           InteractiveLinter::MissingLabel,
         ],
+        [:task, :active] => [InteractiveLinter::MissingContext],
       },
       repo: {},
       issue: {},
