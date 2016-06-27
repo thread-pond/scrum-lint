@@ -21,6 +21,10 @@ module ScrumLint
     def each
     end
 
+    def checklists
+      @source.checklists
+    end
+
     def desc=(desc)
       @source.desc = desc
     end

@@ -43,7 +43,10 @@ module ScrumLint
           InteractiveLinter::MissingHashTag,
           InteractiveLinter::MissingLabel,
         ],
-        [:task, :active] => [InteractiveLinter::MissingContext],
+        [:task, :active] => [
+          InteractiveLinter::MissingContext,
+          InteractiveLinter::MissingChecklistItem,
+        ],
       },
       repo: {},
       issue: {},
@@ -53,6 +56,8 @@ module ScrumLint
       options = ScrumLint::OptionParser.(args)
 
       ScrumLint::Configurator.()
+      boards
+      puts
       if options[:interactive]
         boards.each { |entity| run_interactive_linters(entity) }
       else
