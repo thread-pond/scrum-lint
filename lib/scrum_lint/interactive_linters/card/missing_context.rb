@@ -4,19 +4,19 @@ module ScrumLint
     #   Context: <link to a trello card>
     class MissingContext < InteractiveLinter::Base
 
-      def call(card, project_cards:, **_)
+      def call(card, active_project_cards:, **_)
         return if context?(card)
 
         puts "#{card.name.color(:green)} is missing 'Context' link"
 
-        print_indexed(project_cards, :name)
+        print_indexed(active_project_cards, :name)
         print "enter project number > "
         project_number = gets
         goodbye unless project_number
 
         return if project_number == "\n"
 
-        project_card = project_cards[Integer(project_number) - 1]
+        project_card = active_project_cards[Integer(project_number) - 1]
         card.desc = "Context: #{project_card.url}\n\n#{card.desc}".strip
         card.save
       end

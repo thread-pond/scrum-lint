@@ -17,6 +17,7 @@ module ScrumLint
           desc: trello_card.desc,
           list: list,
           name: trello_card.name,
+          short_url: trello_card.short_url,
           url: trello_card.url,
           source: trello_card,
         }

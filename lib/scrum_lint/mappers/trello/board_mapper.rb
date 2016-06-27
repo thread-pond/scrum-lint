@@ -23,9 +23,14 @@ module ScrumLint
 
       def board_context(trello_board, lists:)
         {
+          active_project_cards: active_project_cards(lists),
           available_labels: trello_board.labels,
           project_cards: project_cards(lists),
         }
+      end
+
+      def active_project_cards(lists)
+        lists.detect { |list| list.name == 'Active Projects' }.cards
       end
 
       def project_cards(lists)
