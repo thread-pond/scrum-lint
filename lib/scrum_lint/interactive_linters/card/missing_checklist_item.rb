@@ -19,6 +19,8 @@ module ScrumLint
           raise "no project found for context link: #{card.name.color(:green)}"
         end
 
+        project_cards << project_card
+
         checklists = project_card.checklists
         return if checklists.flat_map(&:items).any? do |item|
           item.name.include?(card.short_url)
