@@ -20,7 +20,23 @@ module ScrumLint
           short_url: trello_card.short_url,
           url: trello_card.url,
           source: trello_card,
+          checklists: mapped_checklists(trello_card),
         }
+      end
+
+      def mapped_checklists(trello_card)
+        return [] unless project_card?(trello_card)
+        trello_card.checklists.map do |trello_checklist|
+          checklist_mapper.(trello_checklist)
+        end
+      end
+
+      def project_card?(card)
+        card.name.match(/^\[\w+\]/)
+      end
+
+      def checklist_mapper
+        @checklist_mapper ||= ScrumLint::Trello::ChecklistMapper.new
       end
 
     end
