@@ -30,7 +30,7 @@ module ScrumLint
       end
 
       def active_project_cards(lists)
-        lists.detect { |list| list.name == 'Active Projects' }.cards
+        lists.select { |list| list.name == 'Active Projects' }.flat_map(&:cards)
       end
 
       def project_cards(lists)

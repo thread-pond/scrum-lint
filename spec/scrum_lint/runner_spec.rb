@@ -18,8 +18,7 @@ module ScrumLint
       runner.([])
       expect(Linter::MissingTaskList).to have_received(:call)
         .with(instance_of(Board))
-      expect(Linter::ExtraList).to have_received(:call)
-        .with(instance_of(Board))
+      expect(Linter::ExtraList).to have_received(:call).with(instance_of(Board))
     end
 
     it 'checks contexts' do
