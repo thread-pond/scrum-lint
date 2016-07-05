@@ -14,6 +14,8 @@ module ScrumLint
       done_list_matcher: /^Done.*$/,
       project_list_names: ['Active Projects'],
       ignored_list_names: %w(Emergent),
+      repo_mapper: 'Octokit',
+      board_mapper: 'Trello',
     }.freeze
 
     REQUIRED_CONFIGURATION_KEYS = [
@@ -36,6 +38,14 @@ module ScrumLint
         options.delete(key)
       end
       raise "invalid options: #{options.keys}" if options.any?
+    end
+
+    def repo_mapper_class
+      ScrumLint.const_get(repo_mapper)::Mapper
+    end
+
+    def board_mapper_class
+      ScrumLint.const_get(board_mapper)::Mapper
     end
 
   private
