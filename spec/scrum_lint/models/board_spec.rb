@@ -2,7 +2,8 @@ RSpec.describe ScrumLint::Board do
   let(:fake_done_list) { fake_trello_list(name: 'Done Stuff') }
   let(:fake_task_list) { fake_trello_list(name: 'This Sprint') }
   let(:lists) { [fake_done_list, fake_task_list] }
-  let(:board) { described_class.new(lists: lists, url: '', name: '', context: {}) }
+  let(:board_params) { { url: '', name: '', context: {} } }
+  let(:board) { described_class.new(board_params.merge(lists: lists)) }
 
   describe '#lists' do
     it 'returns all of the lists for the board' do

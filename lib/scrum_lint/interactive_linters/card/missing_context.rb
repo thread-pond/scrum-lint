@@ -10,7 +10,7 @@ module ScrumLint
         puts "#{card.name.color(:green)} is missing 'Context' link"
 
         print_indexed(active_project_cards, :name)
-        print "enter project number > "
+        print 'enter project number > '
         project_number = gets
         goodbye unless project_number
 

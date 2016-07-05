@@ -22,4 +22,3 @@ module ScrumLint
     end
   end
 end
-

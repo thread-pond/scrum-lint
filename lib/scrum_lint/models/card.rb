@@ -5,7 +5,9 @@ module ScrumLint
 
     attr_reader :checklists, :desc, :labels, :list, :name, :short_url, :url
 
-    def initialize(checklists:, desc:, list:, name:, url:, short_url:, source:, labels:)
+    def initialize(
+      checklists:, desc:, list:, name:, url:, short_url:, source:, labels:
+    )
       @checklists = checklists
       @desc = desc
       @labels = labels

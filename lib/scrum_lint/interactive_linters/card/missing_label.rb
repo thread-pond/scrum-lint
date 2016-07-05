@@ -8,7 +8,7 @@ module ScrumLint
 
         puts "card missing label: #{card.name.color(:green)}"
         print_indexed(available_labels, :name)
-        print "enter label number > "
+        print 'enter label number > '
         label_number = gets
         goodbye unless label_number
         label = available_labels[Integer(label_number) - 1]

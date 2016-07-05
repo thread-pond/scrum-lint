@@ -7,7 +7,7 @@ module ScrumLint
         return if hashtag?(card)
 
         puts "card missing hashtag: #{card.name.color(:green)}"
-        print "enter tag(s) > "
+        print 'enter tag(s) > '
         tag = gets
         goodbye unless tag
         new_name = "#{tag.strip} #{card.name}"
@@ -34,4 +34,3 @@ module ScrumLint
     end
   end
 end
-

@@ -6,7 +6,7 @@ module ScrumLint
       include Callable
 
       def call(card)
-        return if card.name.match(/\[\d+(\.\d+)?\]$/)
+        return if card.name =~ /\[\d+(\.\d+)?\]$/
 
         Launchy.open(card.url)
         puts "card missing expended points: #{card.name.color(:green)}"
