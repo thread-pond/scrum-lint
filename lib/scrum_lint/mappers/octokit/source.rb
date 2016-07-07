@@ -2,9 +2,9 @@ require 'octokit'
 
 module ScrumLint
   module Octokit
-    # a mapper class to query Github via Octokit and return a mapped tree
+    # a top-level class to query Github via Octokit and return a mapped tree
     # of ScrumLint models
-    class Mapper
+    class Source
 
       include Callable
 

@@ -69,7 +69,7 @@ module ScrumLint
   private
 
     def repos
-      ScrumLint.config.repo_mapper_class.()
+      ScrumLint.config.repo_source_class.()
     end
 
     def run_interactive_linters(entity, context: {})
@@ -106,7 +106,7 @@ module ScrumLint
     end
 
     def boards
-      @boards ||= ScrumLint.config.board_mapper_class.()
+      @boards ||= ScrumLint.config.board_source_class.()
     end
 
   end

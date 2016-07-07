@@ -14,8 +14,8 @@ module ScrumLint
       done_list_matcher: /^Done.*$/,
       project_list_names: ['Active Projects'],
       ignored_list_names: %w(Emergent),
-      repo_mapper: 'Octokit',
-      board_mapper: 'Trello',
+      repo_source: 'Octokit',
+      board_source: 'Trello',
     }.freeze
 
     REQUIRED_CONFIGURATION_KEYS = [
@@ -40,12 +40,12 @@ module ScrumLint
       raise "invalid options: #{options.keys}" if options.any?
     end
 
-    def repo_mapper_class
-      ScrumLint.const_get(repo_mapper)::Mapper
+    def repo_source_class
+      ScrumLint.const_get(repo_source)::Source
     end
 
-    def board_mapper_class
-      ScrumLint.const_get(board_mapper)::Mapper
+    def board_source_class
+      ScrumLint.const_get(board_source)::Source
     end
 
   private

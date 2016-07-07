@@ -2,9 +2,9 @@ require 'trello'
 
 module ScrumLint
   module Trello
-    # a mapper class to query Trello via Ruby Trello and return a
+    # a top-level class to query Trello via Ruby Trello and return a
     # mapped tree of ScrumLint models
-    class Mapper
+    class Source
 
       include Callable
 
