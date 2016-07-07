@@ -8,6 +8,10 @@ module ScrumLint
       @issues = issues
     end
 
+    def sub_entities
+      issues
+    end
+
     def each
       issues.each { |issue| yield(issue) }
     end

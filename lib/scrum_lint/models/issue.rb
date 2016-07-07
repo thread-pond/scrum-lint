@@ -14,6 +14,10 @@ module ScrumLint
       [:open]
     end
 
+    def sub_entities
+      []
+    end
+
     def each
     end
 

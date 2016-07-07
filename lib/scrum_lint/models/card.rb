@@ -22,6 +22,10 @@ module ScrumLint
       @tags ||= CardTagger.(self)
     end
 
+    def sub_entities
+      []
+    end
+
     def each
     end
 

@@ -16,6 +16,10 @@ module ScrumLint
       @tags ||= ListTagger.(self)
     end
 
+    def sub_entities
+      cards
+    end
+
     def each
       cards.each { |card| yield(card) }
     end

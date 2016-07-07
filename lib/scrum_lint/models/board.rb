@@ -29,6 +29,10 @@ module ScrumLint
       [:current]
     end
 
+    def sub_entities
+      lists
+    end
+
     def each
       lists.each { |list| yield(list) }
     end

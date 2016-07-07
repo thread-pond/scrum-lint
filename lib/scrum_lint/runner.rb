@@ -39,14 +39,10 @@ module ScrumLint
       board: {},
       list: {},
       card: {
-        [:task] => [
-          InteractiveLinter::MissingHashTag,
-          InteractiveLinter::MissingLabel,
-        ],
-        [:task, :active] => [
-          InteractiveLinter::MissingContext,
-          InteractiveLinter::MissingChecklistItem,
-        ],
+        InteractiveLinter::MissingHashTag => [:task],
+        InteractiveLinter::MissingLabel => [:task],
+        InteractiveLinter::MissingContext => [:task, :active],
+        InteractiveLinter::MissingChecklistItem => [:task, :active],
       },
       repo: {},
       issue: {},
@@ -59,7 +55,7 @@ module ScrumLint
       boards
       puts
       if options[:interactive]
-        boards.each { |entity| run_interactive_linters(entity) }
+        run_interactive_linters(boards)
       else
         boards.each { |entity| run_linters(entity) }
         repos.each { |repo| run_linters(repo) }
@@ -72,14 +68,21 @@ module ScrumLint
       ScrumLint.config.repo_source_class.()
     end
 
-    def run_interactive_linters(entity, context: {})
-      fetch_linters(entity, linters: INTERACTIVE_LINTERS).each do |linter|
-        linter.(entity, context)
+    def run_interactive_linters(entities, context: {})
+      return unless entities.any?
+
+      linter_tag_map = INTERACTIVE_LINTERS.fetch(entities.first.to_sym)
+      linter_tag_map.each do |linter, tags|
+        entities.each do |entity|
+          next unless tags - entity.tags == []
+
+          linter.(entity, context)
+        end
       end
 
-      new_context = merge_context(entity: entity, context: context)
-      entity.each do |item|
-        run_interactive_linters(item, context: new_context)
+      entities.each do |entity|
+        new_context = merge_context(entity: entity, context: context)
+        run_interactive_linters(entity.sub_entities, context: new_context)
       end
     end
 
