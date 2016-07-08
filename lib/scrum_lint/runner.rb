@@ -43,6 +43,7 @@ module ScrumLint
         InteractiveLinter::MissingLabel => [:task],
         InteractiveLinter::MissingContext => [:task, :active],
         InteractiveLinter::MissingChecklistItem => [:task, :active],
+        InteractiveLinter::ChecklistItemNotCompleted => [:task, :done],
       },
       repo: {},
       issue: {},

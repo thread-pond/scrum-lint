@@ -3,6 +3,8 @@ require 'rainbow/ext/string'
 
 require_relative '../util/callable'
 
+require_relative 'scrum_lint/ext/trello/card'
+
 require_relative 'scrum_lint/linters/board/current/missing_task_list'
 require_relative 'scrum_lint/linters/board/current/extra_done_list'
 require_relative 'scrum_lint/linters/board/current/extra_list'
@@ -14,6 +16,8 @@ require_relative 'scrum_lint/linters/card/task/missing_context'
 require_relative 'scrum_lint/linters/issue/open/stale_issue'
 
 require_relative 'scrum_lint/interactive_linters/base'
+long_name = 'scrum_lint/interactive_linters/card/checklist_item_not_completed'
+require_relative long_name
 require_relative 'scrum_lint/interactive_linters/card/missing_checklist_item'
 require_relative 'scrum_lint/interactive_linters/card/missing_context'
 require_relative 'scrum_lint/interactive_linters/card/missing_hash_tag'

@@ -14,5 +14,9 @@ module ScrumLint
       @source.add_item(item)
     end
 
+    def id
+      @source.id
+    end
+
   end
 end

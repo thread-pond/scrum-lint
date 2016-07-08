@@ -9,19 +9,19 @@ RSpec/FilePath:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 39
+  Max: 48
 
 Metrics/AbcSize:
-  Max: 47
+  Max: 51
 
 Metrics/PerceivedComplexity:
-  Max: 8
+  Max: 10
 
 Style/RegexpLiteral:
   Enabled: false
 
 Metrics/CyclomaticComplexity:
-  Max: 9
+  Max: 10
 
 Metrics/ParameterLists:
   Max: 10

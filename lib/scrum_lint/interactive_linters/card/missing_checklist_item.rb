@@ -13,13 +13,14 @@ module ScrumLint
           context_link.include?(p_card.short_url)
         end
 
-        project_card ||= lookup_project_card(context_link)
-
         unless project_card
-          raise "no project found for context link: #{card.name.color(:green)}"
-        end
+          project_card = lookup_project_card(context_link)
 
-        project_cards << project_card
+          unless project_card
+            raise "no project found for context: #{card.name.color(:green)}"
+          end
+          project_cards << project_card
+        end
 
         checklists = project_card.checklists
         return if checklists.flat_map(&:items).any? do |item|

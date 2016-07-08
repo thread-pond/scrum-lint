@@ -45,6 +45,11 @@ module ScrumLint
       @source.update!
     end
 
+    def update_check_item_state(check_item, checklist:, state:)
+      options = { checklist: checklist, state: state }
+      @source.update_check_item_state(check_item, options)
+    end
+
     def list_name
       list.name
     end
