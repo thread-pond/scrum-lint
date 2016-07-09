@@ -73,7 +73,7 @@ module ScrumLint
 
       linter_tag_map = INTERACTIVE_LINTERS.fetch(entities.first.to_sym)
       linter_tag_map.each do |linter, tags|
-        entities.each do |entity|
+        entities.sort_by(&:name).each do |entity|
           next unless tags - entity.tags == []
 
           linter.(entity, context)

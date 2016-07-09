@@ -36,7 +36,7 @@ module ScrumLint
           goodbye unless confirmation
           case confirmation.chomp.downcase
           when '', 'y'
-            checklist.add_item(card.short_url)
+            Thread.new { checklist.add_item(card.short_url) }
           else
             puts 'skipping card'
           end
@@ -48,7 +48,9 @@ module ScrumLint
           print 'enter a checklist number > '
           checklist_number = gets
           goodbye unless checklist_number
-          checklists[Integer(checklist_number) - 1].add_item(card.short_url)
+          Thread.new do
+            checklists[Integer(checklist_number) - 1].add_item(card.short_url)
+          end
         end
       end
 

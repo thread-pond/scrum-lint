@@ -18,7 +18,7 @@ module ScrumLint
 
         project_card = active_project_cards[Integer(project_number) - 1]
         card.desc = "Context: #{project_card.url}\n\n#{card.desc}".strip
-        card.save
+        Thread.new { card.save }
       end
 
     private
