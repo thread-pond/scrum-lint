@@ -38,10 +38,19 @@ module ScrumLint
       end
 
       def mapped_lists(trello_board)
-        trello_board.lists.map do |trello_list|
-          print '.'
-          list_mapper.(trello_list)
+        lists = []
+        mutex = Mutex.new
+        threads = trello_board.lists.each_with_index.map do |trello_list, index|
+          Thread.new do
+            list = list_mapper.(trello_list)
+            mutex.synchronize do
+              puts "mapped list #{trello_list.name}"
+              lists[index] = list
+            end
+          end
         end
+        threads.each(&:join)
+        lists
       end
 
       def list_mapper
