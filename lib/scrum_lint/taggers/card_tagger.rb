@@ -24,7 +24,7 @@ module ScrumLint
     end
 
     def active_card?(card)
-      card.list_name != 'Emergent'
+      !ScrumLint.config.ignored_list_names.include?(card.list_name)
     end
 
     def project_card?(card)
