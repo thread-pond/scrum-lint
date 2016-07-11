@@ -9,10 +9,10 @@ RSpec/FilePath:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 37
+  Max: 39
 
 Metrics/AbcSize:
-  Max: 45
+  Max: 47
 
 Metrics/PerceivedComplexity:
   Max: 8
