@@ -8,15 +8,16 @@ module ScrumLint
 
         puts "card missing hashtag: #{card.name.color(:green)}"
         print 'enter tag(s) > '
-        tag = gets
-        goodbye unless tag
-        new_name = "#{tag.strip} #{card.name}"
-        print "new name will be #{new_name.color(:blue)}, confirm? (y/n) > "
+        tag_string = gets
+        goodbye unless tag_string
+        hashtags = tag_string.strip.split
+        colored_tags = hashtags.join(' ').color(:blue)
+        print "new hashtags will be #{colored_tags}, confirm? (y/n) > "
         confirmation = gets
         goodbye unless confirmation
         case confirmation.chomp.downcase
         when '', 'y'
-          card.name = new_name
+          card.hashtags = hashtags
           card.save
         when 'exit', 'quit'
           goodbye

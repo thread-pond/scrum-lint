@@ -3,18 +3,25 @@ module ScrumLint
   # cache the list, as well as adding additional functionality going forward.
   class Card
 
-    attr_reader :checklists, :desc, :labels, :list, :name, :short_url, :url
+    attr_reader(
+      :checklists, :desc, :hashtags, :labels, :list, :name, :point_count,
+      :short_url, :task_text, :url
+    )
 
     def initialize(
       checklists:, desc:, list:, name:, url:, short_url:, source:, labels:
     )
+      parsed_name = parse_name(name)
       @checklists = checklists
       @desc = desc
+      @hashtags = parsed_name.fetch(:hashtags)
       @labels = labels
       @list = list
       @name = name
+      @point_count = parsed_name.fetch(:point_count)
       @short_url = short_url
       @source = source
+      @task_text = parsed_name.fetch(:task_text)
       @url = url
     end
 
@@ -31,6 +38,39 @@ module ScrumLint
 
     def desc=(desc)
       @source.desc = desc
+    end
+
+    def hashtags=(hashtags)
+      @hashtags = hashtags
+      @source.name = name_pieces.join(' ')
+    end
+
+    def name_pieces
+      [
+        ("(#{point_count})" if point_count),
+        *hashtags,
+        task_text,
+      ].compact
+    end
+
+    def parse_name(name)
+      segments = name.split
+      hashtags, segments = segments.partition do |segment|
+        segment.match(/^#\S+$/)
+      end
+
+      point_counts, segments = segments.partition do |segment|
+        segment.match(/^\(\d+\)/)
+      end
+
+      raise "too many point counts #{point_counts}" if point_counts.size > 1
+
+      point_count = point_counts.first
+      {
+        point_count: (Integer(point_count.gsub(/[()]/, '')) if point_count),
+        hashtags: hashtags,
+        task_text: segments.join(' '),
+      }
     end
 
     def name=(name)
