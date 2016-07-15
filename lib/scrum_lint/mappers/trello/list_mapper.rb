@@ -5,9 +5,13 @@ module ScrumLint
 
       include Callable
 
-      def call(trello_list)
+      def call(trello_list, board_name:)
         ScrumLint::List.new(list_params(trello_list)).tap do |list|
-          list.cards = mapped_cards(list: list, trello_list: trello_list)
+          list.cards = mapped_cards(
+            list: list,
+            trello_list: trello_list,
+            board_name: board_name,
+          )
         end
       end
 
@@ -17,9 +21,9 @@ module ScrumLint
         { name: trello_list.name }
       end
 
-      def mapped_cards(list:, trello_list:)
+      def mapped_cards(list:, trello_list:, board_name:)
         trello_list.cards.map do |trello_card|
-          card_mapper.(trello_card, list: list)
+          card_mapper.(trello_card, list: list, board_name: board_name)
         end
       end
 

@@ -24,7 +24,8 @@ module ScrumLint
     end
 
     def active_card?(card)
-      !ScrumLint.config.ignored_list_names.include?(card.list_name)
+      !ScrumLint.config.ignored_list_names.include?(card.list_name) &&
+        ScrumLint.config.current_board_names.include?(card.board_name)
     end
 
     def project_card?(card)

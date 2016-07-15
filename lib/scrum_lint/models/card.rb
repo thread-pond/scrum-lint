@@ -4,14 +4,16 @@ module ScrumLint
   class Card
 
     attr_reader(
-      :checklists, :desc, :hashtags, :labels, :list, :name, :point_count,
-      :short_url, :task_text, :url
+      :board_name, :checklists, :desc, :hashtags, :labels, :list, :name,
+      :point_count, :short_url, :task_text, :url
     )
 
     def initialize(
-      checklists:, desc:, list:, name:, url:, short_url:, source:, labels:
+      board_name:, checklists:, desc:, list:, name:, url:, short_url:,
+      source:, labels:
     )
       parsed_name = parse_name(name)
+      @board_name = board_name
       @checklists = checklists
       @desc = desc
       @hashtags = parsed_name.fetch(:hashtags)

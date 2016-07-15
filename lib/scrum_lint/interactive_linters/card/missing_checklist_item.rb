@@ -60,7 +60,11 @@ module ScrumLint
       def lookup_project_card(context_link)
         puts "looking up project card for #{context_link}"
         trello_card = ::Trello::Card.find(context_link.split('/').last)
-        ScrumLint::Trello::CardMapper.(trello_card, list: trello_card.list)
+        ScrumLint::Trello::CardMapper.(
+          trello_card,
+          list: trello_card.list,
+          board_name: trello_card.board.name,
+        )
       end
 
     end

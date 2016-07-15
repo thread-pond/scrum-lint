@@ -42,7 +42,7 @@ module ScrumLint
         mutex = Mutex.new
         threads = trello_board.lists.each_with_index.map do |trello_list, index|
           Thread.new do
-            list = list_mapper.(trello_list)
+            list = list_mapper.(trello_list, board_name: trello_board.name)
             mutex.synchronize do
               puts "mapped list #{trello_list.name}"
               lists[index] = list

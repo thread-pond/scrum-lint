@@ -10,6 +10,7 @@ module ScrumLint
 
     DEFAULT_CONFIGURATION = {
       board_names:      ['Eng: Current'],
+      current_board_names: ['Eng: Current'],
       task_list_names: ['Planned', 'This Sprint', 'Doing', 'In Review'],
       done_list_matcher: /^Done.*$/,
       project_list_names: ['Active Projects'],
