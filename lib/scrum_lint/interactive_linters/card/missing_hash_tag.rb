@@ -4,7 +4,7 @@ module ScrumLint
     class MissingHashTag < InteractiveLinter::Base
 
       def call(card, **_)
-        return if hashtag?(card)
+        return if card.hashtags.any?
 
         puts "card missing hashtag: #{card.name.color(:green)}"
         print 'enter tag(s) > '
@@ -24,12 +24,6 @@ module ScrumLint
         else
           puts 'skipping card'
         end
-      end
-
-    private
-
-      def hashtag?(card)
-        !card.name.match(/#\w+/).nil?
       end
 
     end
