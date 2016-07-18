@@ -84,7 +84,7 @@ module ScrumLint
     end
 
     def save
-      @source.update!
+      Thread.new { @source.update! }
     end
 
     def update_check_item_state(check_item, checklist:, state:)
