@@ -96,6 +96,10 @@ module ScrumLint
       list.name
     end
 
+    def class_name
+      'Card'
+    end
+
     def to_sym
       :card
     end

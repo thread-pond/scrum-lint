@@ -56,7 +56,8 @@ module ScrumLint
       boards
       puts
       if options[:interactive]
-        run_interactive_linters(boards)
+        reporter = ScrumLint::Reporters::InteractiveReporter.new
+        run_interactive_linters(boards, context: { reporter: reporter })
       else
         boards.each { |entity| run_linters(entity) }
         repos.each { |repo| run_linters(repo) }
@@ -69,7 +70,7 @@ module ScrumLint
       ScrumLint.config.repo_source_class.()
     end
 
-    def run_interactive_linters(entities, context: {})
+    def run_interactive_linters(entities, context:)
       return unless entities.any?
 
       linter_tag_map = INTERACTIVE_LINTERS.fetch(entities.first.to_sym)

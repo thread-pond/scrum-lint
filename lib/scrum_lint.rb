@@ -15,6 +15,8 @@ require_relative 'scrum_lint/linters/card/task/missing_context'
 
 require_relative 'scrum_lint/linters/issue/open/stale_issue'
 
+require_relative 'scrum_lint/reporters/interactive_reporter'
+
 require_relative 'scrum_lint/interactive_linters/base'
 long_name = 'scrum_lint/interactive_linters/card/checklist_item_not_completed'
 require_relative long_name
