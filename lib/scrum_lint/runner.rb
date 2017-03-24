@@ -47,17 +47,21 @@ module ScrumLint
       },
       repo: {},
       issue: {},
+      pull_request: {
+        InteractiveLinter::MissingMilestone => [:open],
+      },
     }.freeze
 
     def call(args = ARGV)
       options = ScrumLint::OptionParser.(args)
 
       ScrumLint::Configurator.()
-      boards
+      # boards
       puts
       if options[:interactive]
         reporter = ScrumLint::Reporters::InteractiveReporter.new
-        run_interactive_linters(boards, context: { reporter: reporter })
+        # run_interactive_linters(boards, context: { reporter: reporter })
+        run_interactive_linters(repos, context: { reporter: reporter })
       else
         boards.each { |entity| run_linters(entity) }
         repos.each { |repo| run_linters(repo) }
@@ -65,10 +69,6 @@ module ScrumLint
     end
 
   private
-
-    def repos
-      ScrumLint.config.repo_source_class.()
-    end
 
     def run_interactive_linters(entities, context:)
       return unless entities.any?
@@ -112,6 +112,10 @@ module ScrumLint
 
     def boards
       @boards ||= ScrumLint.config.board_source_class.()
+    end
+
+    def repos
+      @repos ||= ScrumLint.config.repo_source_class.()
     end
 
   end

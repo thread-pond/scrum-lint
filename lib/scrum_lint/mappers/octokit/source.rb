@@ -10,7 +10,7 @@ module ScrumLint
 
       def call
         ScrumLint.config.github_repo_names.map do |repo_name|
-          repo_mapper.(client.repository(repo_name))
+          repo_mapper.(client.repository(repo_name), client: client)
         end
       end
 
