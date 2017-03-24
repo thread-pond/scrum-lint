@@ -17,6 +17,7 @@ module ScrumLint
       ignored_list_names: %w(Emergent),
       repo_source: 'Octokit',
       board_source: 'Trello',
+      github_reviewers: [],
     }.freeze
 
     REQUIRED_CONFIGURATION_KEYS = [

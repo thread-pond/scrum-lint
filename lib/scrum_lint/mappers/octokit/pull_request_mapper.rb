@@ -12,12 +12,18 @@ module ScrumLint
     private
 
       def pull_request_params(octokit_pull_request, client)
+        repo_name = octokit_pull_request.head.repo.full_name
+        number = octokit_pull_request[:number]
+
         {
+          assignees: octokit_pull_request[:assignees].map(&:login),
+          author: octokit_pull_request[:user].login,
           client: client,
           link: octokit_pull_request[:html_url],
           milestone: octokit_pull_request[:milestone],
-          number: octokit_pull_request[:number],
-          repo_name: octokit_pull_request.head.repo.full_name,
+          number: number,
+          repo_name: repo_name,
+          reviewers: client.pull_request_review_requests(repo_name, number).map(&:login),
           title: octokit_pull_request[:title],
         }
       end

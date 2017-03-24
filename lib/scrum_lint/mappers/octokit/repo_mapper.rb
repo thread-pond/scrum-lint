@@ -15,7 +15,10 @@ module ScrumLint
         {
           issues: mapped_issues(octokit_repo),
           pull_requests: mapped_pull_requests(octokit_repo, client),
-          context: { milestones: octokit_repo.rels[:milestones].get.data },
+          context: {
+            milestones: octokit_repo.rels[:milestones].get.data,
+            reviewers: ScrumLint.config.github_reviewers,
+          },
         }
       end
 

@@ -26,6 +26,7 @@ require_relative 'scrum_lint/interactive_linters/card/missing_hash_tag'
 require_relative 'scrum_lint/interactive_linters/card/missing_label'
 long_name = 'scrum_lint/interactive_linters/pull_request/missing_milestone'
 require_relative long_name
+require_relative 'scrum_lint/interactive_linters/pull_request/missing_reviewer'
 
 require_relative 'scrum_lint/version'
 require_relative 'scrum_lint/configuration'

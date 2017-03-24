@@ -49,6 +49,7 @@ module ScrumLint
       issue: {},
       pull_request: {
         InteractiveLinter::MissingMilestone => [:open],
+        InteractiveLinter::MissingReviewer => [:open],
       },
     }.freeze
 
