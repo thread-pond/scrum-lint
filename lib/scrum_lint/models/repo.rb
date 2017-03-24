@@ -2,18 +2,20 @@ module ScrumLint
   # a wrapper class for a Github repo from Octokit
   class Repo
 
-    attr_reader :issues
+    attr_reader :issues, :pull_requests, :context
 
-    def initialize(issues:)
+    def initialize(issues:, pull_requests:, context:)
+      @context = context
       @issues = issues
+      @pull_requests = pull_requests
     end
 
     def sub_entities
-      issues
+      pull_requests
     end
 
     def each
-      issues.each { |issue| yield(issue) }
+      pull_requests.each { |pull_request| yield(pull_request) }
     end
 
     def tags

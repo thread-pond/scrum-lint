@@ -24,6 +24,8 @@ require_relative 'scrum_lint/interactive_linters/card/missing_checklist_item'
 require_relative 'scrum_lint/interactive_linters/card/missing_context'
 require_relative 'scrum_lint/interactive_linters/card/missing_hash_tag'
 require_relative 'scrum_lint/interactive_linters/card/missing_label'
+long_name = 'scrum_lint/interactive_linters/pull_request/missing_milestone'
+require_relative long_name
 
 require_relative 'scrum_lint/version'
 require_relative 'scrum_lint/configuration'
@@ -37,6 +39,7 @@ require_relative 'scrum_lint/taggers/list_tagger'
 require_relative 'scrum_lint/mappers/octokit/source'
 require_relative 'scrum_lint/mappers/octokit/repo_mapper'
 require_relative 'scrum_lint/mappers/octokit/issue_mapper'
+require_relative 'scrum_lint/mappers/octokit/pull_request_mapper'
 require_relative 'scrum_lint/mappers/trello/source'
 require_relative 'scrum_lint/mappers/trello/board_mapper'
 require_relative 'scrum_lint/mappers/trello/list_mapper'
@@ -49,6 +52,7 @@ require_relative 'scrum_lint/models/list'
 require_relative 'scrum_lint/models/board'
 require_relative 'scrum_lint/models/repo'
 require_relative 'scrum_lint/models/issue'
+require_relative 'scrum_lint/models/pull_request'
 
 # Hack override to prevent Launchy from opening buttloads of tabs
 module Launchy
