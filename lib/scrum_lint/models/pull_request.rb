@@ -46,6 +46,7 @@ module ScrumLint
         repo_name,
         number,
         reviewers,
+        accept: 'application/vnd.github.black-cat-preview+json',
       )
     end
   end

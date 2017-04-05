@@ -23,7 +23,11 @@ module ScrumLint
           milestone: octokit_pull_request[:milestone],
           number: number,
           repo_name: repo_name,
-          reviewers: client.pull_request_review_requests(repo_name, number).map(&:login),
+          reviewers: client.pull_request_review_requests(
+            repo_name,
+            number,
+            accept: 'application/vnd.github.black-cat-preview+json',
+          ).map(&:login),
           title: octokit_pull_request[:title],
         }
       end
