@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'launchy', '~> 2.4.3'
   spec.add_dependency 'rainbow', '~> 2.1.0'
   spec.add_dependency 'ruby-trello', '~> 1.4'
-  # spec.add_dependency 'octokit', '~> 4.3.0' # This version does not have review API
+  spec.add_dependency 'octokit', '~> 4.7.0'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'byebug', '~> 8.2'
