@@ -9,13 +9,16 @@ module ScrumLint
         /\AContext: (?<context_link>.*)\/.*$/i =~ card.desc
         return unless context_link
 
+        unless context_link =~ /trello.com/
+          raise "invalid context link for #{card.name.color(:green)}"
+        end
+
         project_card = project_cards.detect do |p_card|
           context_link.include?(p_card.short_url)
         end
 
         unless project_card
           project_card = lookup_project_card(context_link)
-
           unless project_card
             raise "no project found for context: #{card.name.color(:green)}"
           end
