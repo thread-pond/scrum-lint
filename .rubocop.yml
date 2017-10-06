@@ -26,6 +26,9 @@ Metrics/CyclomaticComplexity:
 Metrics/ParameterLists:
   Max: 10
 
+Style/AccessorMethodName:
+  Enabled: false
+
 # default disabled rules
 Style/AutoResourceCleanup:
   Enabled: true

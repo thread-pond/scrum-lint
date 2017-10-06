@@ -3,7 +3,7 @@ module ScrumLint
     # checks that cards have #HashTag and interactively assigns
     class MissingHashTag < InteractiveLinter::Base
 
-      MESSAGE = 'missing hashtag'
+      MESSAGE = 'missing hashtag'.freeze
 
       def call(card, reporter:, **_)
         return if card.hashtags.any?

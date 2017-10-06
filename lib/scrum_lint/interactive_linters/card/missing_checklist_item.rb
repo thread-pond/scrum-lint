@@ -63,7 +63,7 @@ module ScrumLint
         ScrumLint::Trello::CardMapper.(
           trello_card,
           list: trello_card.list,
-          board_name: trello_card.board.name,
+          board_name: trello_card.board.name
         )
       end
 

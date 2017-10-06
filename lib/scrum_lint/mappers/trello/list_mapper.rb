@@ -10,7 +10,7 @@ module ScrumLint
           list.cards = mapped_cards(
             list: list,
             trello_list: trello_list,
-            board_name: board_name,
+            board_name: board_name
           )
         end
       end
