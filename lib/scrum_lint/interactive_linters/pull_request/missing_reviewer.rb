@@ -9,16 +9,25 @@ module ScrumLint
         return if pull_request.reviewers.any? || pull_request.assignees.any?
 
         shuffled_reviewers = (reviewers - [pull_request.author]).shuffle
+        reviewer = shuffled_reviewers.first
 
-        puts "PR #{pull_request.name.color(:red)}, " \
-          "#{pull_request.author.color(:green)} needs reviewer"
-        print_indexed(shuffled_reviewers, :itself)
-        print 'Enter reviewer number > '
+        puts "Assigning #{reviewer.color(:green)} to " \
+          "PR #{pull_request.name.color(:red)} " \
+          "(#{pull_request.author.color(:yellow)}). " \
+          "Type 's' to manually assign (ENTER/s)> "
 
-        reviewer_number = gets
-        goodbye unless reviewer_number
-        return if reviewer_number.blank?
-        reviewer = shuffled_reviewers[Integer(reviewer_number) -1]
+        choice = gets
+        goodbye unless choice.strip == 's' || choice.strip.empty?
+
+        if choice.strip == 's'
+          print_indexed(shuffled_reviewers, :itself)
+          print 'Enter reviewer number > '
+          reviewer_number = gets
+          goodbye unless reviewer_number
+          return if reviewer_number.blank?
+          reviewer = shuffled_reviewers[Integer(reviewer_number) -1]
+        end
+
         pull_request.update(assignee: reviewer, reviewers: [reviewer])
       end
 
