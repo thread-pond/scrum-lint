@@ -8,7 +8,8 @@ module ScrumLint
       def call(pull_request, reviewers:, **)
         return if pull_request.reviewers.any? || pull_request.assignees.any?
 
-        shuffled_reviewers = (reviewers - [pull_request.author]).shuffle
+        exceptions = ScrumLint.config.github_out_of_office + [pull_request.author]
+        shuffled_reviewers = (reviewers - exceptions).shuffle
         reviewer = shuffled_reviewers.first
 
         puts "Assigning #{reviewer.color(:green)} to " \

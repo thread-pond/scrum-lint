@@ -18,6 +18,7 @@ module ScrumLint
       repo_source: 'Octokit',
       board_source: 'Trello',
       github_reviewers: [],
+      github_out_of_office: [],
     }.freeze
 
     REQUIRED_CONFIGURATION_KEYS = [
