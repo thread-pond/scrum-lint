@@ -16,10 +16,6 @@ end
 
 RSpec.configure do |config|
   config.before(:suite) do
-    config_file_path = './.scrum-lint.yml'
-    unless File.exist?(config_file_path)
-      fixture_file_path = File.join(fixture_path, 'scrum-lint.yml')
-      File.write(config_file_path, File.read(fixture_file_path))
-    end
+    ENV['config_file_path'] = File.join(fixture_path, 'scrum-lint.yml')
   end
 end

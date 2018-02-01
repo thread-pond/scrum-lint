@@ -63,7 +63,7 @@ module ScrumLint
     end
 
     def config_file_path
-      './.scrum-lint.yml'
+      ENV.fetch('config_file_path', './.scrum-lint.yml')
     end
 
     def symbolize_keys(hash)
