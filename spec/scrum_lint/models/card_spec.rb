@@ -1,6 +1,7 @@
 RSpec.describe ScrumLint::Card do
   let(:card_params) do
     {
+      board_name: nil,
       checklists: nil,
       desc: nil,
       labels: nil,
