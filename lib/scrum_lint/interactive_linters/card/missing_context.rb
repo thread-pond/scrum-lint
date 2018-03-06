@@ -5,19 +5,15 @@ module ScrumLint
     class MissingContext < InteractiveLinter::Base
 
       def call(card, active_project_cards:, **_)
-        return if context?(card)
+        return if context?(card) || active_project_cards.empty?
 
         puts "#{card.name.color(:green)} is missing 'Context' link"
+        context_card = find_and_confirm_context_card(card, active_project_cards)
 
-        print_indexed(active_project_cards, :name)
-        print 'enter project number > '
-        project_number = gets
-        goodbye unless project_number
+        return unless context_card
 
-        return if project_number == "\n"
-
-        project_card = active_project_cards[Integer(project_number) - 1]
-        card.desc = "Context: #{project_card.url}\n\n#{card.desc}".strip
+        puts "adding context: #{context_card.name}"
+        card.desc = "Context: #{context_card.url}\n\n#{card.desc}".strip
         Thread.new { card.save }
       end
 
@@ -25,6 +21,56 @@ module ScrumLint
 
       def context?(card)
         card.desc.match(/^Context:/)
+      end
+
+      def get_hashtag(string)
+        string.slice(/#\w*/)
+      end
+
+      def find_and_confirm_context_card(card, active_project_cards)
+        context_card = active_project_cards.detect do |project_card|
+          get_hashtag(project_card.name) == get_hashtag(card.name)
+        end
+
+        if context_card
+          suggest_context_card(context_card, active_project_cards)
+        else
+          pick_from_active_projects(active_project_cards)
+        end
+      end
+
+      def suggest_context_card(context_card, active_project_cards)
+        print "Add context link for #{context_card.name}? (y/n) > "
+        confirmation = gets.chomp.downcase
+
+        case confirmation
+        when ''
+          context_card
+        when 'y'
+          context_card
+        when 'n'
+          pick_from_active_projects(active_project_cards)
+        else
+          print_skip_message(confirmation)
+        end
+      end
+
+      def pick_from_active_projects(active_project_cards)
+        print_indexed(active_project_cards, :name)
+        print 'enter project number > '
+        user_input = gets.chomp
+        project_number = user_input.to_i
+
+        if project_number.between?(1, active_project_cards.length)
+          active_project_cards[project_number - 1]
+        else
+          print_skip_message(user_input)
+        end
+      end
+
+      def print_skip_message(choice)
+        puts "#{choice} is not a valid option. "\
+          'Skipping card; no context link added.'
       end
 
     end
