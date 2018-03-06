@@ -107,4 +107,19 @@ RSpec.describe ScrumLint::InteractiveLinter::MissingContext, '#call' do
       expect(checker).to_not have_received(:gets)
     end
   end
+
+  context 'when there are no project cards' do
+    before do
+      allow(checker).to receive(:gets).and_return('butt')
+      allow(checker).to receive(:desc=)
+    end
+
+    it 'does nothing' do
+      card = fake_trello_card(name: 'poop doop', desc: 'talk less, fart more')
+      checker.(card, active_project_cards: [])
+
+      expect(checker).to_not have_received(:desc=)
+      expect(checker).to_not have_received(:gets)
+    end
+  end
 end
