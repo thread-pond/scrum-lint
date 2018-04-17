@@ -5,7 +5,7 @@ module ScrumLint
     # checks that cards have a checklist item on associated Context card
     class MissingChecklistItem < InteractiveLinter::Base
 
-      def call(card, project_cards:, **_)
+      def call(card, project_cards:, **_context)
         /\AContext: (?<context_link>.*)\/.*$/i =~ card.desc
         return unless context_link
 

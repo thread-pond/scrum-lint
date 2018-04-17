@@ -3,7 +3,7 @@ module ScrumLint
     # checks that cards have Trello labels and interactively assigns
     class MissingLabel < InteractiveLinter::Base
 
-      def call(card, available_labels:, **_)
+      def call(card, available_labels:, **_context)
         return if label?(card)
 
         puts "card missing label: #{card.name.color(:green)}"

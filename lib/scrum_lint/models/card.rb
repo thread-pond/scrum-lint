@@ -35,8 +35,7 @@ module ScrumLint
       []
     end
 
-    def each
-    end
+    def each; end
 
     def desc=(desc)
       @source.desc = desc

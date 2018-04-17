@@ -18,8 +18,7 @@ module ScrumLint
       []
     end
 
-    def each
-    end
+    def each; end
 
     def to_sym
       :issue

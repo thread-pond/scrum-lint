@@ -2,7 +2,7 @@ module ScrumLint
   RSpec.describe Runner, '#call' do
     let(:runner) { described_class.new }
 
-    before(:each) do
+    before do
       allow(Launchy).to receive(:open)
 
       allow(::Trello::Board).to receive(:all).and_return([fake_trello_board])
@@ -45,7 +45,7 @@ module ScrumLint
 
       it 'runs for cards with "task" and "done" tags' do
         allow(ScrumLint::CardTagger).to receive(:call)
-          .and_return([:task, :done])
+          .and_return(%i[task done])
         allow(Linter::MissingHashTag).to receive(:call).and_call_original
         allow(Linter::MissingContext).to receive(:call)
         allow(Linter::MissingExpendedPoints).to receive(:call).and_call_original

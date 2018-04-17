@@ -5,7 +5,7 @@ module ScrumLint
 
       MESSAGE = 'missing hashtag'.freeze
 
-      def call(card, reporter:, **_)
+      def call(card, reporter:, **_context)
         return if card.hashtags.any?
 
         reporter.fail(card, MESSAGE)
