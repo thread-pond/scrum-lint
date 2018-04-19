@@ -4,7 +4,7 @@ module ScrumLint
     #   Context: <link to a trello card>
     class MissingContext < InteractiveLinter::Base
 
-      def call(card, active_project_cards:, **_)
+      def call(card, active_project_cards:, **_context)
         return if context?(card) || active_project_cards.empty?
 
         puts "#{card.name.color(:green)} is missing 'Context' link"

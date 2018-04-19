@@ -26,7 +26,7 @@ Metrics/CyclomaticComplexity:
 Metrics/ParameterLists:
   Max: 10
 
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: false
 
 # default disabled rules
@@ -42,35 +42,46 @@ Style/CollectionMethods:
     find: 'detect'
     find_all: 'select'
 
-Style/FirstArrayElementLineBreak:
+Layout/FirstArrayElementLineBreak:
   Enabled: true
 
-Style/FirstHashElementLineBreak:
+Layout/FirstHashElementLineBreak:
   Enabled: true
 
-Style/FirstMethodArgumentLineBreak:
+Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 
-Style/FirstMethodParameterLineBreak:
+Layout/FirstMethodParameterLineBreak:
   Enabled: true
 
-Style/MultilineArrayBraceLayout:
+Layout/MultilineArrayBraceLayout:
   Enabled: true
 
-Style/MultilineHashBraceLayout:
+Layout/MultilineHashBraceLayout:
   Enabled: true
 
-Style/MultilineMethodCallBraceLayout:
+Layout/MultilineMethodCallBraceLayout:
   Enabled: true
 
-Style/MultilineMethodDefinitionBraceLayout:
+Layout/MultilineMethodDefinitionBraceLayout:
   Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - scrum_lint.gemspec
+    - spec/**/*_spec.rb
 
 Style/OptionHash:
   Enabled: true
 
 Style/Send:
   Enabled: true
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
 
 RSpec/VerifiedDoubles:
   Enabled: true
@@ -79,13 +90,16 @@ RSpec/VerifiedDoubles:
 Style/LambdaCall:
   EnforcedStyle: braces
 
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
 
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
 RSpec/DescribeMethod:

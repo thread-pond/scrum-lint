@@ -23,8 +23,8 @@ module ScrumLint
       },
       card: {
         [:task] => [Linter::MissingHashTag],
-        [:task, :active] => [Linter::MissingContext],
-        [:task, :done] => [Linter::MissingExpendedPoints],
+        %i[task active] => [Linter::MissingContext],
+        %i[task done] => [Linter::MissingExpendedPoints],
         [:project] => [],
       },
       repo: {
@@ -41,9 +41,9 @@ module ScrumLint
       card: {
         InteractiveLinter::MissingHashTag => [:task],
         InteractiveLinter::MissingLabel => [:task],
-        InteractiveLinter::MissingContext => [:task, :active],
-        InteractiveLinter::MissingChecklistItem => [:task, :active],
-        InteractiveLinter::ChecklistItemNotCompleted => [:task, :done],
+        InteractiveLinter::MissingContext => %i[task active],
+        InteractiveLinter::MissingChecklistItem => %i[task active],
+        InteractiveLinter::ChecklistItemNotCompleted => %i[task done],
       },
       repo: {},
       issue: {},

@@ -5,7 +5,7 @@ module ScrumLint
 
       include Callable
 
-      def call(card, project_cards:, **_)
+      def call(card, project_cards:, **_context)
         /\AContext: (?<context_link>.*)\/.*$/i =~ card.desc
         return unless context_link
 
@@ -49,21 +49,21 @@ module ScrumLint
 
         check_item = check_items.first
 
-        if check_item.state == 'incomplete'
-          puts "task #{card.name.color(:green)} should be marked complete " \
-            "on project #{project_card.name.color(:blue)}"
-          print 'mark check item completed? (y/n) > '
-          confirmation = gets
-          goodbye unless confirmation
-          case confirmation.chomp.downcase
-          when '', 'y'
-            Thread.new do
-              options = { checklist: checklist, state: 'complete' }
-              project_card.update_check_item_state(check_item, options)
-            end
-          else
-            puts 'skipping card'
+        return unless check_item.state == 'incomplete'
+
+        puts "task #{card.name.color(:green)} should be marked complete " \
+          "on project #{project_card.name.color(:blue)}"
+        print 'mark check item completed? (y/n) > '
+        confirmation = gets
+        goodbye unless confirmation
+        case confirmation.chomp.downcase
+        when '', 'y'
+          Thread.new do
+            options = { checklist: checklist, state: 'complete' }
+            project_card.update_check_item_state(check_item, options)
           end
+        else
+          puts 'skipping card'
         end
       end
 

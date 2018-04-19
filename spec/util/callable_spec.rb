@@ -1,6 +1,6 @@
-# rubocop:disable Style/EmptyLinesAroundClassBody
+# rubocop:disable Layout/EmptyLinesAroundClassBody
 RSpec.describe Callable do
-  after(:each) do
+  after do
     if Object.const_defined?(:MyCallableClass)
       Object.__send__(:remove_const, :MyCallableClass)
     end
@@ -32,8 +32,7 @@ RSpec.describe Callable do
       class MyCallableClass
         include Callable
 
-        def bad_meth
-        end
+        def bad_meth; end
       end
     end.to raise_error(Callable::CallableError, /invalid method name bad_meth/)
   end
@@ -45,10 +44,9 @@ RSpec.describe Callable do
 
       private
 
-        def good_meth
-        end
+        def good_meth; end
       end
     end.not_to raise_error
   end
 end
-# rubocop:enable Style/EmptyLinesAroundClassBody
+# rubocop:enable Layout/EmptyLinesAroundClassBody

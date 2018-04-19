@@ -5,7 +5,7 @@ module Trello
   class Card < BasicData
 
     def update_check_item_state(check_item, checklist:, state:)
-      unless %w(complete incomplete).include?(state)
+      unless %w[complete incomplete].include?(state)
         raise "invalid state #{state}"
       end
 

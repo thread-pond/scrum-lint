@@ -14,16 +14,16 @@ module ScrumLint
       task_list_names: ['Planned', 'This Sprint', 'Doing', 'In Review'],
       done_list_matcher: /^Done.*$/,
       project_list_names: ['Active Projects'],
-      ignored_list_names: %w(Emergent),
+      ignored_list_names: %w[Emergent],
       repo_source: 'Octokit',
       board_source: 'Trello',
     }.freeze
 
-    REQUIRED_CONFIGURATION_KEYS = [
-      :trello_developer_public_key,
-      :trello_member_token,
-      :github_access_token,
-      :github_repo_names,
+    REQUIRED_CONFIGURATION_KEYS = %i[
+      trello_developer_public_key
+      trello_member_token
+      github_access_token
+      github_repo_names
     ].freeze
 
     CONFIGURATION_KEYS =

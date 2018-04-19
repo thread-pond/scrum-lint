@@ -103,8 +103,8 @@ RSpec.describe ScrumLint::InteractiveLinter::MissingContext, '#call' do
       card = fake_trello_card(name: 'poop doop', desc: 'Context: fart/less')
       checker.(card, active_project_cards: [project_card, project_card_2])
 
-      expect(checker).to_not have_received(:desc=)
-      expect(checker).to_not have_received(:gets)
+      expect(checker).not_to have_received(:desc=)
+      expect(checker).not_to have_received(:gets)
     end
   end
 
@@ -118,8 +118,8 @@ RSpec.describe ScrumLint::InteractiveLinter::MissingContext, '#call' do
       card = fake_trello_card(name: 'poop doop', desc: 'talk less, fart more')
       checker.(card, active_project_cards: [])
 
-      expect(checker).to_not have_received(:desc=)
-      expect(checker).to_not have_received(:gets)
+      expect(checker).not_to have_received(:desc=)
+      expect(checker).not_to have_received(:gets)
     end
   end
 end
