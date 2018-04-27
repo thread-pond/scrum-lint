@@ -10,7 +10,7 @@ module ScrumLint
 
         reporter.fail(card, MESSAGE)
         reporter.get_value do |value|
-          hashtags = value.split
+          hashtags = value.split.map { |val| val[0] == '#' ? val : '#' + val }
           card.hashtags = hashtags
           card.save
         end
