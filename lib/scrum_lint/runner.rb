@@ -61,7 +61,7 @@ module ScrumLint
       puts
       if options[:interactive]
         reporter = ScrumLint::Reporters::InteractiveReporter.new
-        run_interactive_linters(boards, context: { reporter: reporter })
+        # run_interactive_linters(boards, context: { reporter: reporter })
         run_interactive_linters(repos, context: { reporter: reporter })
       else
         boards.each { |entity| run_linters(entity) }

@@ -27,7 +27,7 @@ module ScrumLint
             repo_name,
             number,
             accept: 'application/vnd.github.black-cat-preview+json',
-          ).map(&:login),
+          ).users,
           title: octokit_pull_request[:title],
         }
       end
