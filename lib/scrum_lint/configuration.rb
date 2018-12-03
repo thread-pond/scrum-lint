@@ -38,7 +38,7 @@ module ScrumLint
         public_send("#{key}=", options.fetch(key))
         options.delete(key)
       end
-      raise "invalid options: #{options.keys}" if options.any?
+      warn "invalid options: #{options.keys}" if options.any?
     end
 
     def repo_source_class
